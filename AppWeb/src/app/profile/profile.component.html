@@ -1,0 +1,28 @@
+<app-profile-header></app-profile-header>
+
+<nav class="sidebar sidebar-offcanvas">
+  <ul class="nav">
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/">
+              <i class="menu-icon fa fa-tachometer-alt"></i>
+              <span class="menu-title">Dashboard</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/media">
+              <i class="menu-icon fa fa-clipboard-list"></i>
+              <span class="menu-title">Media</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/shared">
+              <i class="menu-icon fa fa-clipboard-list"></i>
+              <span class="menu-title">Likes y Retweets</span>
+          </a>
+      </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
