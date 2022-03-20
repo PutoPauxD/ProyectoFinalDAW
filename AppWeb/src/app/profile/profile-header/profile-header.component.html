@@ -1,1 +1,87 @@
-<p>profile-header works!</p>
+
+
+<div class="row">
+  <div class="col d-flex align-items-center justify-content-center pe-0 ms-2">
+      <i class="fa-solid fa-arrow-left"></i>
+  </div>
+  <div class="col-10 col-sm-10 col-md-10 px-0 py-1 fw-bold">
+    {{usuario?.username}}
+    <p class="small text-secondary mb-0 fw-normal">{{usuario?.numeroPosts}} Posts</p>
+  </div>
+</div>
+
+<div class="row">
+  <img src="assets/profile/profile-header.jpg" alt="Profile Header" class=" position-relative p-0">
+
+  <div class="row p-0">
+    <div class="col d-flex justify-content-between">
+      <img [src]="usuario?.profpicture" alt="Profile Image" id="profile-img" class="rounded-circle px-1" type="button" data-bs-toggle="modal" data-bs-target="#modalFotoPerfil" style="width: 130px; height: 130px;">
+      <button class="rounded-pill bg-dark text-white border m-3" >Editar perfil</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row my-2 p-0 container">
+    <div class="col">
+      <span class="display-6 fw-bold">{{usuario?.username}}</span>
+    </div>
+    <div class="row">
+      <div class="col text-secondary small">@{{usuario?.name}}</div>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col">
+      {{usuario?.descripcion}}
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col">
+      <span class="text-secondary d-block"> <i class="fa-solid fa-cake-candles"></i> Cumpleaños {{usuario?.cumpleanios | date}}</span>
+    </div>
+    <div class="col">
+      <span class="text-secondary d-block"> <i class="fa-regular fa-calendar-days"></i> Miembro desde {{usuario?.diaUnion | date}}</span>
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col d-flex justify-content-start">
+      <span class="me-2 fw-bold"> {{usuario?.seguidores}} <span class="text-secondary fw-normal">Seguidores</span> </span>
+      <span class="fw-bold"> {{usuario?.seguidos}} <span class="text-secondary fw-normal">Siguiendo</span> </span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalFotoPerfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="staticBackdropLabel">Cambiar foto de perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <input type="file" id="file" accept="image/*" (change)="cambiarFotoPerfil($event)">
+
+        <image-cropper
+        [imageChangedEvent]="imgChangeEvt"
+        [aspectRatio]="4/4"
+        [maintainAspectRatio]="true"
+        [resizeToWidth]="256"
+        format="png"
+        (imageCropped)="recortarImagen($event)"
+        ></image-cropper>
+
+        <img [src]="prevImagenRec">
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success border-0" (click)="guardarFotoPerfil()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

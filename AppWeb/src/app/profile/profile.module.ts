@@ -7,9 +7,11 @@ import { SharedPostsComponent } from './shared-posts/shared-posts.component';
 import { MediaComponent } from './media/media.component';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ImageCropperModule } from 'ngx-image-cropper'
+
 export const rutasHijas: Routes = [
   {path: '', component: ProfileComponent, children: [
-    {path: '', component: PostsComponent},
+    {path: 'post', component: PostsComponent},
     {path: 'media', component: MediaComponent},
     {path: 'shared', component: SharedPostsComponent},
   ]},
@@ -26,7 +28,8 @@ export const rutasHijas: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(rutasHijas)
+    RouterModule.forChild(rutasHijas),
+    ImageCropperModule
   ],
   exports: []
 
