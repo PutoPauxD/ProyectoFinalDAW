@@ -1,0 +1,22 @@
+<div class="p-0 card text-white" style="background-color: #2b2d2f;">
+  <div class="card-body p-0">
+    <div class=" d-flex">
+        <div class="mx-2">
+            <img class="rounded-circle img-fluid" style="width: 5rem;" src="{{usuario?.profpicture}}" alt="">
+        </div>
+        <div class="container px-0 mt-1">
+            <p class="text-white fw-bold d-inline">
+                {{usuario?.username}}
+                <p class="text-secondary fw-light d-inline">
+                    @{{usuario?.name}} · 24m
+                </p>
+                <p class="mb-0"> {{post?.text}}</p>
+        </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between w-75 m-auto">
+    <i class="bi bi-chat"></i>
+    <i class="bi bi-arrow-repeat"></i>
+    <i class="bi bi-heart"></i>
+  </div>
+</div>

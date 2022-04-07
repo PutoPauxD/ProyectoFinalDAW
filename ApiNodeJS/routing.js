@@ -24,6 +24,15 @@ routing.get('/post/:id', async (req, res) => {
     res.status(200).send(JSON.stringify(rows, null, 4));
 })
 
+//Devolver un post de un usuario concreto.
+routing.get('/post/:id/all', async (req, res) => {
+    const {id} = req.params;
+    const sql = 'select * from post where id_user = ?';
+    const rows = await conexion.query(sql, [id]);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).send(JSON.stringify(rows, null, 4));
+})
+
 //Generar un post.
 routing.post('/post/', async (req, res) => {
     const {text} = req.body;
@@ -92,8 +101,21 @@ routing.delete('/users/:id', async (req, res) => {
 //Modificar un usuario
 routing.put('/users/:id', async (req, res) => {
     const {id} = req.params;
-    const {email, username, name, password, profpicture} = req.body;
-    const sql = `update users set email = '${email}', username = '${username}', name = '${name}', password = '${password}', profpicture = '${profpicture}' where id = ${id}`
+    const {email, username, name, password, profpicture, descripcion, seguidos, seguidores, numeroPosts, diaUnion, cumpleanios, headerpicture} = req.body;
+    
+    const sql = `update users set email = '${email}',
+                                  username = '${username}', 
+                                  name = '${name}', 
+                                  password = '${password}', 
+                                  profpicture = '${profpicture}', 
+                                  descripcion = '${descripcion}', 
+                                  seguidos = ${seguidos}, 
+                                  seguidores = ${seguidores}, 
+                                  numeroPosts = ${numeroPosts}, 
+                                  diaUnion = '${diaUnion}', 
+                                  cumpleanios = '${cumpleanios}, 
+                                  headerpicture = '${headerpicture} where id = ${id}`;
+    
     await conexion.query(sql, [id]);
     res.status(200).send();
 })

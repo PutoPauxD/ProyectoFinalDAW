@@ -7,7 +7,8 @@ import { SharedPostsComponent } from './shared-posts/shared-posts.component';
 import { MediaComponent } from './media/media.component';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ImageCropperModule } from 'ngx-image-cropper'
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ProfileHeaderModalComponent } from './profile-header/profile-header-modal/profile-header-modal.component'
 
 export const rutasHijas: Routes = [
   {path: '', component: ProfileComponent, children: [
@@ -25,6 +26,7 @@ export const rutasHijas: Routes = [
     PostsComponent,
     SharedPostsComponent,
     MediaComponent,
+    ProfileHeaderModalComponent,
   ],
   imports: [
     CommonModule,

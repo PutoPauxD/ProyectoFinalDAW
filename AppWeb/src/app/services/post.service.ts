@@ -6,23 +6,27 @@ import { UsuarioModel } from '../model/usuario.model';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class PostService {
 
-  private url = 'http://localhost:3000/api/users/'
+  private url = 'http://localhost:3000/api/post/'
 
   constructor(private http: HttpClient) { }
 
-  //Get Users
-  getUsers() {
+  //Get Posts
+  getPosts() {
     return this.http.get(this.url);
   }
 
-  //Get User
-  getUser(id: number) {
+  getPostsByUser(userId) {
+    return this.http.get(this.url+userId+'/all');
+  }
+
+  //Get Post
+  getPost(id: number) {
     return this.http.get(this.url+id);
   }
 
-   changeUser(usuario: UsuarioModel) {
+   changePost(usuario: UsuarioModel) {
     return this.http.put(this.url+usuario.id, usuario).pipe(take(1));
   }
 }
