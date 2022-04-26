@@ -7,6 +7,14 @@ const conexion = require('./config/conexion');
 /***************************/
 /***************************/
 
+//Datos para todos los posts
+routing.get('/home', async(req, res) => {
+    const sql = 'SELECT u.username, u.name, p.id_post, p.text, p.likes, p.shares, u.profpicture  FROM users u INNER JOIN post p ON p.id_user = u.id ORDER BY p.id_post DESC'
+    const rows = await conexion.query(sql);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).send(JSON.stringify(rows, null, 4));
+});
+
 //Devolver todos los posts.
 routing.get('/post/', async (req,res) => {
     const sql = 'select * from post'
@@ -79,7 +87,7 @@ routing.get('/users/:id', async (req, res) => {
     const sql = 'select * from users where id = ?';
     const rows = await conexion.query(sql, [id]);
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).send(JSON.stringify(rows, null, 4));
+    res.status(200).send(JSON.stringify(rows[0], null, 4));
 })
 
 //Añadir un usuario.
@@ -113,9 +121,9 @@ routing.put('/users/:id', async (req, res) => {
                                   seguidores = ${seguidores}, 
                                   numeroPosts = ${numeroPosts}, 
                                   diaUnion = '${diaUnion}', 
-                                  cumpleanios = '${cumpleanios}, 
-                                  headerpicture = '${headerpicture} where id = ${id}`;
-    
+                                  cumpleanios = '${cumpleanios}', 
+                                  headerpicture = '${headerpicture}'
+                                  where id = ${id}`;
     await conexion.query(sql, [id]);
     res.status(200).send();
 })

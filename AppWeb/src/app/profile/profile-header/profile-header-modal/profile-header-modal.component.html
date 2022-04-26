@@ -1,4 +1,25 @@
-<!-- Modal -->
+<button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#cambiarPerfil">Editar perfil</button>
+
+
+<div class="modal fade" id="cambiarPerfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Editar perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalFotoPerfil">Editar foto de perfil</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalNombreUsuario">Editar nombre de usuario</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#">Editar contraseña</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="modalFotoPerfil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
   <div class="modal-dialog ">
     <div class="modal-content">
@@ -23,6 +44,27 @@
       <div class="modal-footer bg-dark">
         <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-success border-0" (click)="guardarFotoPerfil()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalNombreUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="staticBackdropLabel">Cambiar nombre de usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <form action="#">
+          <label for="name">Nombre de usuario: </label>
+          <input id="name" type="text" [formControl]="username">
+        </form>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success border-0" data-bs-dismiss="modal" (click)="editarUsername()">Guardar</button>
       </div>
     </div>
   </div>

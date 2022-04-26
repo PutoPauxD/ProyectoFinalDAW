@@ -8,7 +8,8 @@ import { UsuarioModel } from '../model/usuario.model';
 })
 export class UserService {
 
-  private url = 'http://localhost:3000/api/users/'
+  private url = 'http://localhost:3000/api/users/';
+  private userLogged: any;
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,18 @@ export class UserService {
   }
 
    changeUser(usuario: UsuarioModel) {
-    return this.http.put(this.url+usuario.id, usuario).pipe(take(1));
+    return this.http.put(this.url+usuario.id, usuario);
+  }
+
+  login() {
+    // this.setUserLogged(user)
+  }
+
+  getUserLogged() {
+    return this.userLogged;
+  }
+
+  setUserLogged() {
+    return this.userLogged;
   }
 }

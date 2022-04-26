@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { take } from 'rxjs';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,20 +10,21 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './profile-header-modal.component.html',
   styleUrls: ['./profile-header-modal.component.css']
 })
-export class ProfileHeaderModalComponent implements OnInit {
+export class ProfileHeaderModalComponent {
 
-  public usuario: UsuarioModel;
+  @Input() public usuario: UsuarioModel;
   public prevImagenRec: any;
   public imgChangeEvt: any;
+  public showEditModal: boolean;
+  public username: FormControl;
 
 
   constructor(private userService: UserService) {
-    this.userService.getUser(1).subscribe(users => {
-      this.usuario = users[0];
-    });
+      this.username = new FormControl('');
   }
 
-  ngOnInit(): void {
+  public onShowEditModal(): void {
+    this.showEditModal = !this.showEditModal;
   }
 
   guardarFotoPerfil() {
@@ -42,6 +45,11 @@ export class ProfileHeaderModalComponent implements OnInit {
       alert('Por favor seleccione un archivo mas pequeño.');
       archivo = null;
     }
+  }
+
+  editarUsername(): void {
+      this.usuario.username = this.username.value;
+      this.userService.changeUser(this.usuario).pipe(take(1)).subscribe();
   }
 
 }

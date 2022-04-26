@@ -14,8 +14,11 @@
 
   <div class="row p-0">
     <div class="col d-flex justify-content-between">
-      <img [src]="usuario?.profpicture" alt="Profile Image" id="profile-img" class="rounded-circle px-1" type="button" data-bs-toggle="modal" data-bs-target="#modalFotoPerfil" style="width: 130px; height: 130px;">
-      <button class="rounded-pill bg-dark text-white border m-3" >Editar perfil</button>
+
+      <img [src]="usuario?.profpicture" alt="Profile Image" id="profile-img" class="rounded-circle px-1" style="width: 130px; height: 130px;">
+
+      <app-profile-header-modal [usuario]="usuario"></app-profile-header-modal>
+
     </div>
   </div>
 </div>
@@ -51,5 +54,5 @@
       <span class="fw-bold"> {{usuario?.seguidos}} <span class="text-secondary fw-normal">Siguiendo</span> </span>
     </div>
   </div>
-
 </div>
+

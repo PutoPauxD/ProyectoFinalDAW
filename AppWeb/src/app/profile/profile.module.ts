@@ -9,13 +9,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ProfileHeaderModalComponent } from './profile-header/profile-header-modal/profile-header-modal.component'
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const rutasHijas: Routes = [
   {path: '', component: ProfileComponent, children: [
+    {path: '', component: PostsComponent},
     {path: 'post', component: PostsComponent},
     {path: 'media', component: MediaComponent},
     {path: 'shared', component: SharedPostsComponent},
-  ]},
+  ]
+},
 ]
 
 
@@ -30,8 +34,11 @@ export const rutasHijas: Routes = [
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(rutasHijas),
-    ImageCropperModule
+    ImageCropperModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: []
 

@@ -19,23 +19,30 @@
           </div>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/profile">
-              <i class="menu-icon fa fa-tachometer-alt"></i>
-              <span class="menu-title">Perfil</span>
+      <li class="nav-item cursor">
+          <a class="nav-link" (click)="navigate('/home')">
+            <i class="bi bi-house-fill me-2"></i>
+            <span class="menu-title">Home</span>
           </a>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link button" routerLink="/">
-              <i class="menu-icon fa fa-clipboard-list"></i>
-              <span class="menu-title">Ingresos y Egresos</span>
+      <li class="nav-item cursor">
+          <a class="nav-link" (click)="navigate('/profile')">
+            <i class="bi bi-person-fill me-2"></i>
+            <span class="menu-title">Perfil</span>
           </a>
       </li>
-      <li class="nav-item cursor">
+
+      <li class="nav-item cursor" >
+          <a class="nav-link button" >
+            <i class="bi bi-envelope-fill me-2"></i>
+            <span class="menu-title" >Messages</span>
+          </a>
+      </li>
+      <li class="nav-item cursor" (click)="navigate('/home')">
           <a class="nav-link btn">
-              <i class=" menu-icon fa fa-sign-out-alt "></i>
-              <span class="menu-title ">Cerrar sesión</span>
+            <i class="bi bi-door-closed-fill me-2"></i>
+            <span class="menu-title">Cerrar sesion</span>
           </a>
       </li>
 

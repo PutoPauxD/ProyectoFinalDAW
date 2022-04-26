@@ -14,8 +14,8 @@ export class ProfileHeaderComponent {
 
 
   constructor(private userService: UserService) {
-    this.userService.getUser(1).subscribe(users => {
-      this.usuario = users[0];
+    this.userService.getUser(1).subscribe((users: UsuarioModel) => {
+      this.usuario = users;
     });
   }
 

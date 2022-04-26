@@ -5,8 +5,8 @@ import { ProfileModule } from './profile/profile.module';
 
 const routes: Routes = [
   { path: 'profile', loadChildren:() => ProfileModule },
-  { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
 ];
 
 @NgModule({

@@ -1,16 +1,17 @@
-<div class="p-0 card text-white" style="background-color: #2b2d2f;">
+<div class="p-0 card text-white bg-dark border-0">
   <div class="card-body p-0">
     <div class=" d-flex">
         <div class="mx-2">
-            <img class="rounded-circle img-fluid" style="width: 5rem;" src="{{usuario?.profpicture}}" alt="">
+            <img class="rounded-circle img-fluid mt-2" style="width: 4rem;" src="{{usuario?.profpicture || data?.profpicture}}" alt="">
         </div>
         <div class="container px-0 mt-1">
             <p class="text-white fw-bold d-inline">
-                {{usuario?.username}}
+                {{usuario?.username || data?.username}}
                 <p class="text-secondary fw-light d-inline">
-                    @{{usuario?.name}} · 24m
+                    @{{usuario?.name || data?.name}} · 24m
                 </p>
-                <p class="mb-0"> {{post?.text}}</p>
+                <p class="mb-0"> {{post?.text || data?.text}}</p>
+
         </div>
     </div>
   </div>
@@ -20,3 +21,4 @@
     <i class="bi bi-heart"></i>
   </div>
 </div>
+<hr>
