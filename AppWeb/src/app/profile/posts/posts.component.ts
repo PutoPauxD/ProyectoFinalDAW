@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PostModel } from 'src/app/model/post.model';
-import { UsuarioModel } from 'src/app/model/usuario.model';
-import { PostService } from 'src/app/services/post.service';
-import { UserService } from 'src/app/services/user.service';
+import { Component } from '@angular/core';
+import { HomeService } from 'src/app/services/home.service';
+import { PostActivityService } from 'src/app/services/post-activity.service';
 
 @Component({
   selector: 'app-posts',
@@ -10,17 +8,31 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent {
-  public usuario: UsuarioModel;
-  public posts: PostModel[];
+  data: any;
+  usuario: any;
+  post: any;
 
-  constructor(private postService: PostService, private usuarioService: UserService) {
-    this.usuarioService.getUser(1).subscribe({
-      next: (user: any) => {
-        this.usuario = user;
-        this.postService.getPostsByUser(this.usuario.id).subscribe( {
-          next: (posts: any) => this.posts = posts
+  constructor(private homeService: HomeService, private postActivity: PostActivityService) {
+    const username = "api"
+    this.homeService.getHomeByUser(username).subscribe({
+      next: (res: any) => {
+        this.data = res;
+
+        this.data.forEach(data => {
+          this.usuario = {
+            username: data.username,
+            name: data.name,
+            profpicture: data.profpicture,
+          }
+          this.post = {
+            text: data.text,
+            shares: 10,
+          }
+          this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
+          this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})
         });
       }
+
     });
   }
 }

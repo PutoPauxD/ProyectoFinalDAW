@@ -14,4 +14,9 @@ export class HomeService {
   getHome() {
     return this.http.get(this.url);
   }
+
+  //Get Posts
+  getHomeByUser(username) {
+    return this.http.get(this.url + username);
+  }
 }

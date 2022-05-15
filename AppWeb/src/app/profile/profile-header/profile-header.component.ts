@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,15 +12,13 @@ export class ProfileHeaderComponent {
 
   public usuario: UsuarioModel;
 
-
-
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.userService.getUser(1).subscribe((users: UsuarioModel) => {
       this.usuario = users;
     });
   }
 
-
-
-
+  navigate(route: string): void {
+    this.router.navigate([route]);
+  }
 }

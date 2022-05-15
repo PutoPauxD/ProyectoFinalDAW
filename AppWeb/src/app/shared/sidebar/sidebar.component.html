@@ -5,7 +5,7 @@
 
               <div class="user-wrapper">
                   <div class="profile-image">
-                      <img src="assets/face1.jpg" alt="profile image">
+                      <img [src]="usuario?.profpicture" alt="profile image">
                   </div>
 
                   <div class="text-wrapper">
@@ -27,7 +27,7 @@
       </li>
 
       <li class="nav-item cursor">
-          <a class="nav-link" (click)="navigate('/profile')">
+          <a class="nav-link" (click)="navigate('/profile/:'+this.usuario?.id)">
             <i class="bi bi-person-fill me-2"></i>
             <span class="menu-title">Perfil</span>
           </a>

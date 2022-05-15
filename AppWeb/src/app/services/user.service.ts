@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take } from 'rxjs';
 import { UsuarioModel } from '../model/usuario.model';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { UsuarioModel } from '../model/usuario.model';
 export class UserService {
 
   private url = 'http://localhost:3000/api/users/';
-  private userLogged: any;
+  private userLogged: UsuarioModel;
 
   constructor(private http: HttpClient) { }
 
@@ -35,7 +34,7 @@ export class UserService {
     return this.userLogged;
   }
 
-  setUserLogged() {
-    return this.userLogged;
+  setUserLogged(usuario) {
+    this.userLogged = usuario;
   }
 }

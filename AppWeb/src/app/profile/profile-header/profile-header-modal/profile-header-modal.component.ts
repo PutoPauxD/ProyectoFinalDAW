@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { take } from 'rxjs';
 import { UsuarioModel } from 'src/app/model/usuario.model';

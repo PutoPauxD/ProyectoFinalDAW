@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { HomeService } from '../services/home.service';
+import { PostActivityService } from '../services/post-activity.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +11,12 @@ import { HomeService } from '../services/home.service';
 })
 export class HomeComponent {
   data: any;
-  usuario: any
-  post: any
+  usuario: any;
+  post: any;
 
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService, private postActivity: PostActivityService, private usuarioService: UserService, private authService: AuthService) {
+    this.usuario = this.usuarioService.getUser;
+    console.log('logged in: ',this.authService.isLoggedIn());
     this.homeService.getHome().subscribe({
       next: (data: any) => {
         this.data = data;
@@ -24,12 +29,12 @@ export class HomeComponent {
           }
           this.post = {
             text: data.text,
-            likes: data.likes,
-            shares: data.shares,
+            shares: 10,
           }
+          this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
+          this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})
         });
       }
-
     });
   }
 }

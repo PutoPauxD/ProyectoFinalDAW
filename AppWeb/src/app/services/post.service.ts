@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take } from 'rxjs';
-import { UsuarioModel } from '../model/usuario.model';
+import { PostModel } from '../model/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class PostService {
     return this.http.get(this.url+id);
   }
 
-   changePost(usuario: UsuarioModel) {
-    return this.http.put(this.url+usuario.id, usuario).pipe(take(1));
+   changePost(post: PostModel) {
+    return this.http.put(this.url+post.id, post);
   }
 }

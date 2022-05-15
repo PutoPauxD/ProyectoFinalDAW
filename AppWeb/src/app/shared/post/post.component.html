@@ -2,23 +2,23 @@
   <div class="card-body p-0">
     <div class=" d-flex">
         <div class="mx-2">
-            <img class="rounded-circle img-fluid mt-2" style="width: 4rem;" src="{{usuario?.profpicture || data?.profpicture}}" alt="">
+            <img class="rounded-circle img-fluid mt-2" style="width: 4rem;" src="{{data?.profpicture}}" (click)="navigate('/profile/')" alt="">
         </div>
         <div class="container px-0 mt-1">
             <p class="text-white fw-bold d-inline">
-                {{usuario?.username || data?.username}}
+                {{data?.username}}
                 <p class="text-secondary fw-light d-inline">
-                    @{{usuario?.name || data?.name}} · 24m
+                    @{{data?.name}} · 24m
                 </p>
-                <p class="mb-0"> {{post?.text || data?.text}}</p>
+                <p class="mb-0"> {{data?.text}}</p>
 
         </div>
     </div>
   </div>
   <div class="d-flex justify-content-between w-75 m-auto">
     <i class="bi bi-chat"></i>
-    <i class="bi bi-arrow-repeat" (click)="shareClicked()"> {{post?.shares || data?.shares}} </i>
-    <i class="bi bi-heart"> {{post?.likes || data?.likes}} </i>
+    <i class="bi bi-arrow-repeat" (click)="shareClicked()"> {{data?.shares}} </i>
+    <i class="bi" [ngClass]="liked ? 'bi-heart-fill text-danger' : 'bi-heart'" (click)="likeClicked()" > {{data?.likes}} </i>
   </div>
 </div>
 <hr>
