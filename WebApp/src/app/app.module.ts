@@ -1,16 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'
-import { ProfileModule } from './profile/profile.module';
-import { SharedModule } from './shared/shared.module';
-
-import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
-import { AullModule } from './aull/aull.module';
-import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,15 +13,13 @@ import { AuthGuard } from './services/auth.guard';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    ProfileModule,
-    SharedModule,
-    AuthModule,
-    AullModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    AuthModule,
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

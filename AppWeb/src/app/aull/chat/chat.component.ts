@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UsuarioModel } from '../model/usuario.model';
-import { MensajesService } from '../services/mensajes.service';
-import { UserService } from '../services/user.service';
+import { UsuarioModel } from '../../model/usuario.model';
+import { MensajesService } from '../../services/mensajes.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-chat',

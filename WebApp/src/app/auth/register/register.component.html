@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card text-dark">
+    <div class="card-header">
+      <b>Registrarse</b>
+    </div>
+    <div class="card-body">
+        <label>Nombre y Apellidos</label>
+        <input type="text" class="form-control mb-2" placeholder="Ingrese su nombre y apellidos" [(ngModel)]="usuario.name">
+
+        <label>Nombre de usuario</label>
+        <input type="text" class="form-control mb-2" placeholder="Ingrese su nombre de usuario" [(ngModel)]="usuario.username">
+
+        <label>Email</label>
+        <input type="email" class="form-control mb-2" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
+
+        <label>Contraseña</label>
+        <input type="password" class="form-control mb-2" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
+
+        <button class="btn btn-primary mb-2 w-100" (click)="register()">Registrar Usuario</button>
+        <label>Ya dispones de una cuenta? <a routerLink="/login">Iniciar Sesión</a></label>
+    </div>
+  </div>
+</div>

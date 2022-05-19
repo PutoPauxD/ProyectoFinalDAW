@@ -99,14 +99,6 @@ routing.get("/users/:id", async (req, res) => {
     res.status(200).send(JSON.stringify(rows[0], null, 4));
 })
 
-//Añadir un usuario.
-routing.post("/users/", async (req, res) => {
-    const {email, username, name, password, profpicture} = req.body;
-    const sql = `insert into users(email, username, name, password, profpicture) values ("${email}", "${username}", "${name}", "${password}", "${profpicture}")`;
-    await conexion.query(sql);
-    res.status(200).send();
-})
-
 //Borrar un usuario.
 routing.delete("/users/:id", async (req, res) => {
     const {id} = req.params;
@@ -186,7 +178,7 @@ routing.get("/activity/isliked/:id", async (req, res) => {
 });
 
 
-routing.get("/loguser/:password/:email", async (req, res) => {
+routing.get("/authuser/:password/:email", async (req, res) => {
     const {password} = req.params;
     const {email} = req.params;
     const sql = `select * from users where password = ? and email = ?`;
@@ -196,7 +188,14 @@ routing.get("/loguser/:password/:email", async (req, res) => {
 });
 
 
-routing.post("/reguser")
+
+//Añadir un usuario.
+routing.post("/authuser/", async (req, res) => {
+    const {email, username, name, password, profpicture} = req.body;
+    const sql = `insert into users(email, username, name, password, profpicture) values ("${email}", "${username}", "${name}", "${password}", "${profpicture}")`;
+    await conexion.query(sql);
+    res.status(200).send();
+}); 
 
 /***************************/
 /***************************/

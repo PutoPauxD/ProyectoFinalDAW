@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsuarioModel } from '../model/usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = 'http://localhost:3000/api/loguser'
+  private url = 'http://localhost:3000/api/authuser'
   private loggedIn: boolean;
+  private userLogged: UsuarioModel;
 
   constructor(private http: HttpClient) {}
 
@@ -24,5 +26,13 @@ export class AuthService {
 
   isLogged() {
     return this.loggedIn;
+  }
+
+  getUserLogged() {
+    return this.userLogged;
+  }
+
+  setUserLogged(usuario) {
+    this.userLogged = usuario;
   }
 }

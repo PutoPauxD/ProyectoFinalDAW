@@ -11,6 +11,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ProfileHeaderModalComponent } from './profile-header/profile-header-modal/profile-header-modal.component'
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../services/auth.guard';
 
 export const rutasHijas: Routes = [
   {path: '', component: ProfileComponent, children: [
@@ -18,7 +19,7 @@ export const rutasHijas: Routes = [
     {path: 'post', component: PostsComponent},
     {path: 'media', component: MediaComponent},
     {path: 'shared', component: SharedPostsComponent},
-  ]
+  ], canActivate: [AuthGuard]
 },
 ]
 

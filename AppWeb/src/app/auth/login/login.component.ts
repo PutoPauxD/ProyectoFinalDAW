@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +21,14 @@ export class LoginComponent {
     this.authService.authUser(this.usuario).subscribe({
       next: (loggedUser) => {
         this.usuarioService.setUserLogged(loggedUser);
-        this.authService.isLoggedIn()
         this.navigate('/home');
+      },
+      error: (err) => {
+        console.log(err);
       }
     })
   }
+
   navigate(route: string): void {
     this.router.navigate([route]);
   }

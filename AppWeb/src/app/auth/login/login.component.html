@@ -9,7 +9,7 @@
       <label style="float:left">Contraseña</label>
       <input type="password" class="form-control my-2" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
       <button class="btn btn-primary my-2 w-100" (click)="login()">Acceder</button>
-      <label>Aun no tienes cuenta? <a href="#">Registrarse</a></label>
+      <label>Aun no tienes cuenta? <a (click)="navigate('/register')">Registrarse</a></label>
   </div>
 </div>
 </div>

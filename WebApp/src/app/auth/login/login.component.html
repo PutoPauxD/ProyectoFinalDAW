@@ -8,8 +8,8 @@
         <input type="email" class="form-control my-2" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
         <label style="float:left">Contraseña</label>
         <input type="password" class="form-control my-2" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
-        <button class="btn btn-primary my-2 w-100" (click)="Register()">Acceder</button>
-        <label>Ya tienes una cuenta? <a href="#">Iniciar Sesión</a></label>
+        <button class="btn btn-primary my-2 w-100" (click)="login()">Acceder</button>
+        <label>Aun no tienes cuenta? <a routerLink="/register">Registrarse</a></label>
     </div>
   </div>
-  </div>
+</div>

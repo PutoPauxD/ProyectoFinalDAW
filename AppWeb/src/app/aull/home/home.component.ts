@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { HomeService } from '../services/home.service';
-import { PostActivityService } from '../services/post-activity.service';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { HomeService } from '../../services/home.service';
+import { PostActivityService } from '../../services/post-activity.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent {
 
   constructor(private homeService: HomeService, private postActivity: PostActivityService, private usuarioService: UserService, private authService: AuthService) {
     this.usuario = this.usuarioService.getUser;
-    console.log('logged in: ',this.authService.isLoggedIn());
+    console.log('logged in: ',this.authService.isLogged());
     this.homeService.getHome().subscribe({
       next: (data: any) => {
         this.data = data;
