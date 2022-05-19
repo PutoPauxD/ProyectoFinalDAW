@@ -5,11 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
+import { PublicModule } from './auth/public.module';
+import { HomeComponent } from './functionalities/home/home.component';
+import { ProfileComponent } from './functionalities/profile/profile.component';
+import { SearchComponent } from './functionalities/search/search.component';
+import { MessagesComponent } from './functionalities/messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    ProfileComponent,
+    SearchComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +25,7 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AuthModule,
+    PublicModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

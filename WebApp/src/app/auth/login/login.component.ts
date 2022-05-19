@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { PublicService } from 'src/app/services/public.service';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +14,14 @@ export class LoginComponent {
     password: '',
   };
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private publicService: PublicService, private router: Router) { }
 
   login() {
-    this.authService.authUser(this.usuario).subscribe({
+    this.publicService.authUser(this.usuario).subscribe({
       next: (loggedUsser) => {
-        this.authService.setUserLogged(loggedUsser);
-        console.log(this.authService.getUserLogged());
-        this.router.navigateByUrl('/register')
+        this.publicService.setUserLogged(loggedUsser);
+        console.log(this.publicService.getUserLogged());
+        this.router.navigateByUrl('/aull')
       }
     })
   }

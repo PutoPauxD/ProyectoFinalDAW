@@ -5,7 +5,7 @@ import { UsuarioModel } from '../model/usuario.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class PublicService {
 
   private url = 'http://localhost:3000/api/authuser'
   private loggedIn: boolean;
