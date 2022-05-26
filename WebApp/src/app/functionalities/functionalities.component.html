@@ -1,16 +1,12 @@
-
-
-
-
 <div class="row container-fluid p-0 m-0">
-  <div class="col-3 d-none d-sm-block">
+  <div class="col-3 d-none d-md-block">
     <app-left-sidebar></app-left-sidebar>
   </div>
-  <div class="col p-0">
+  <div class="col noscrollable pb-2">
     <router-outlet></router-outlet>
   </div>
-  <div class="col-3 d-none d-sm-block">
+  <div class="col-3 d-none d-md-block">
     <app-right-sidebar></app-right-sidebar>
   </div>
-  <app-footer></app-footer>
+  <app-footer class="d-md-none bg-dark zindextop"></app-footer>
 </div>

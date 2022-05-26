@@ -1,0 +1,18 @@
+<div class="p-0 card text-white bg-dark border-0" (click)="navigate('/chat/')">
+  <div class="card-body p-0">
+    <div class=" d-flex">
+        <div class="mx-2">
+            <img class="rounded-circle img-fluid mt-2" style="width: 3rem;" src="{{data?.profpicture}}" alt="">
+        </div>
+        <div class="container px-0 mt-1">
+            <p class="text-white fw-bold d-inline">
+                {{data?.username}}
+                <p class="text-secondary fw-light d-inline">
+                    @{{data?.name}} · 24m
+                </p>
+                <p class="mb-2"> {{data?.lastMessage}}</p>
+                <p class="mb-2" *ngIf="!data?.lastMessage">Todavía no tienes ningún mensaje con esta persona</p>
+        </div>
+    </div>
+  </div>
+</div>

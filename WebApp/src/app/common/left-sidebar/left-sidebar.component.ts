@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PublicService } from 'src/app/services/public.service';
 
 @Component({
@@ -9,11 +10,19 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class LeftSidebarComponent  {
 
-  constructor(private publicService: PublicService, private router: Router) { }
+  public usuario: UsuarioModel
+
+  constructor(private publicService: PublicService, private router: Router) {
+    this.usuario = this.publicService.getUserLogged()
+  }
 
   public logout(): void {
     this.publicService.setUserLogged({});
-    console.log(this.publicService.getUserLogged());
+    this.publicService.setLoggedIn(false);
     this.router.navigateByUrl('/login');
+  }
+
+  public userProfile(): void {
+    this.router.navigate(['/profile/'+this.usuario.id]);
   }
 }

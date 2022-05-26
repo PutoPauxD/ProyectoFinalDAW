@@ -1,0 +1,15 @@
+<div class="p-0 card text-white bg-dark border-0">
+  <div class="card-body p-0" (click)="navigate()">
+    <div class=" d-flex">
+      <div class="mx-2">
+          <img class="rounded-circle img-fluid cursor" style="width: 4rem;" src="{{user?.profpicture}}" alt="">
+      </div>
+      <div class="container d-flex align-items-center px-0 mt-2">
+          <p class="text-white fw-bold d-inline">{{user?.username}}
+            <p class="text-secondary ms-1 fw-light d-inline">@{{user?.name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="follow" (click)="follow()">Seguir</div>
+</div>
+<hr>

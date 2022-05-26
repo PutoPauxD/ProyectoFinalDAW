@@ -16,6 +16,9 @@
         <label>Contraseña</label>
         <input type="password" class="form-control mb-2" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
 
+        <label>Fecha de Nacimiento</label>
+        <input type="date" class="form-control mb-2" placeholder="Ingrese su fecha de nacimiento, por favor" [(ngModel)]="usuario.cumpleanios">
+
         <button class="btn btn-primary mb-2 w-100" (click)="register()">Registrar Usuario</button>
         <label>Ya dispones de una cuenta? <a routerLink="/login">Iniciar Sesión</a></label>
     </div>

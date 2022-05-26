@@ -14,14 +14,18 @@ export class LoginComponent {
     password: '',
   };
 
-  constructor(private publicService: PublicService, private router: Router) { }
+  constructor(private publicService: PublicService, private router: Router) {
+    this.publicService.setLoggedIn(false);
+  }
 
   login() {
     this.publicService.authUser(this.usuario).subscribe({
       next: (loggedUsser) => {
-        this.publicService.setUserLogged(loggedUsser);
-        console.log(this.publicService.getUserLogged());
-        this.router.navigateByUrl('/aull')
+        if (loggedUsser) {
+          this.publicService.setUserLogged(loggedUsser);
+          this.publicService.setLoggedIn(true);
+          this.router.navigateByUrl('/home');
+        }
       }
     })
   }

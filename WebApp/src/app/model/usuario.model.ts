@@ -6,6 +6,7 @@ export interface UsuarioModel{
   username: string;
   name: string;
   descripcion?: string;
+  role: number;
 
   seguidos: number;
   seguidores: number;

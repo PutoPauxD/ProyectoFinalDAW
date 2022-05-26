@@ -1,0 +1,14 @@
+<div class="p-0 my-2 card text-white bg-dark border-0">
+  <div class="card-body p-0">
+    <div class=" d-flex justify-content-around">
+        <div class="mx-2">
+          <img class="rounded-circle img-fluid m-2" style="width: 3rem;" src="{{loggedUser?.profpicture}}">
+        </div>
+        <div class="container-fluid px-0 m-1 row">
+          <input type="text" class="form-control w-75" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoPost.text">
+          <span class="input-group-text imgEnviar w-25" id="basic-addon2" (click)="generarPost()"> <img src="assets/Send.png" width="20px"> </span>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>

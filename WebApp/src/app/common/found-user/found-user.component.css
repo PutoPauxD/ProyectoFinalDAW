@@ -1,0 +1,12 @@
+.follow{
+  border: solid 1px white;
+  border-radius: 30%;
+  height: fit-content !important;
+  padding-right: 5px;
+  padding-left: 5px;
+  align-self: center;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}

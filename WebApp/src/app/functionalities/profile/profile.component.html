@@ -1,1 +1,35 @@
-<p>profile works!</p>
+<div class="container-fluids bg-dark text-white">
+
+  <app-profile-header *ngIf="usuario" [usuario]="usuario"></app-profile-header>
+
+  <nav class="sidebar sidebar-offcanvas bg-dark">
+    <ul class="nav d-flex justify-content-between px-3">
+      <li class="nav-item">
+        <a class="nav-link text-secondary" routerLink="post" routerLinkActive="text-white">
+          <span class="menu-title">Tweets</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-secondary" routerLink="media" routerLinkActive="text-white">
+          <span class="menu-title">Media</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-secondary" routerLink="shared" routerLinkActive="text-white">
+          <span class="menu-title">Likes y Retweets</span>
+        </a>
+      </li>
+
+
+    </ul>
+  </nav>
+
+  <hr class="text-white mt-0">
+
+  <div class="container-fluid text-white">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

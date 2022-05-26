@@ -1,17 +1,18 @@
-<nav class="sidebar sidebar-offcanvas">
+<nav class="container-fluid sidebar sidebar-offcanvas my-2">
   <ul class="nav">
+
       <li class="nav-item nav-profile">
           <div class="nav-link">
 
               <div class="user-wrapper">
                   <div class="profile-image">
-                      <!-- <img [src]="usuario?.profpicture" style="width: 70%" alt="profile image"> -->
+                      <img [src]="usuario?.profpicture" style="width: 70%" class="rounded-circle" alt="profile image">
                   </div>
 
                   <div class="text-wrapper">
                       <p class="profile-name"></p>
                       <div>
-                          <small class="designation text-muted">Gerente</small>
+                          <small class="designation text-muted" *ngIf="usuario.role === 1">Administrador</small>
                       </div>
                   </div>
               </div>
@@ -19,32 +20,39 @@
           </div>
       </li>
 
-      <li class="nav-item cursor" router-link="/home">
-          <a class="nav-link" >
+      <li class="nav-item cursor w-100">
+          <a class="nav-link" routerLink="/home">
             <i class="bi bi-house-fill me-2"></i>
             <span class="menu-title">Home</span>
           </a>
       </li>
 
-      <li class="nav-item cursor">
-          <a class="nav-link" router-link="/profile">
+      <li class="nav-item cursor w-100">
+          <a class="nav-link" routerLink="/search">
+            <i class="bi bi-search me-2"></i>
+            <span class="menu-title">Search</span>
+          </a>
+      </li>
+
+      <li class="nav-item cursor w-100">
+          <a class="nav-link" (click)="userProfile()">
             <i class="bi bi-person-fill me-2"></i>
             <span class="menu-title">Perfil</span>
           </a>
       </li>
 
-      <li class="nav-item cursor" >
-          <a class="nav-link button" router-link="/messages">
+      <li class="nav-item cursor w-100" >
+          <a class="nav-link" routerLink="/chats/">
             <i class="bi bi-envelope-fill me-2"></i>
             <span class="menu-title" >Messages</span>
           </a>
       </li>
-      <li class="nav-item cursor">
-          <a class="nav-link btn" (onclick)="logout()">
+
+      <li class="nav-item cursor w-100">
+          <a class="nav-link" (click)="logout()">
             <i class="bi bi-door-closed-fill me-2"></i>
             <span class="menu-title">Cerrar sesion</span>
           </a>
       </li>
-
   </ul>
 </nav>

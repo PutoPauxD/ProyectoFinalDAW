@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent  {
 
-  constructor() { }
+  public busqueda: string;
+  public foundUsers: any[];
 
+  constructor(private searchService: SearchService) {
+    this.busqueda = '';
+    this.foundUsers = [];
+  }
+
+  search() {
+    if(this.busqueda !== '') {
+      this.searchService.search(this.busqueda).subscribe({
+        next: (users) => {this.foundUsers = []; this.foundUsers.push(users); console.log(this.foundUsers)}
+      })
+    } else {
+      this.foundUsers = [];
+    }
+  }
 
 }

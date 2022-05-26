@@ -15,13 +15,16 @@ export class PublicService {
 
   //Auth User
   authUser(usuario) {
-    this.loggedIn = true;
     return this.http.get(this.url + '/' + usuario.password + '/' + usuario.email);
   }
 
   //Registrar Usuario
   regUser(usuario) {
     return this.http.post(this.url, usuario);
+  }
+
+  setLoggedIn(loggedIn: boolean): void {
+    this.loggedIn = loggedIn;
   }
 
   isLogged() {

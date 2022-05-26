@@ -1,0 +1,11 @@
+.imgEnviar:active{
+  transform: scale(0.9);
+}
+
+.imgEnviar{
+  background-color: transparent;
+}
+
+.cursor{
+  cursor: pointer;
+}

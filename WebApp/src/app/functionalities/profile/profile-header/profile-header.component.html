@@ -1,0 +1,63 @@
+
+<div class="row container-fluid p-0">
+  <div class="col d-flex align-items-center justify-content-center pe-0 ms-2">
+      <i class="fa-solid fa-arrow-left text-white" (click)="navigate('/home')"></i>
+  </div>
+  <div class="col-10 col-sm-10 col-md-10 px-0 py-1 fw-bold">
+    {{usuario?.username}}
+    <p class="small text-secondary mb-0 fw-normal">{{usuario?.numeroPosts}} Posts</p>
+  </div>
+</div>
+
+<div class="row container-fluid m-0 p-0">
+  <img [src]="usuario?.headerpicture" alt="Profile Header" class=" position-relative p-0">
+
+  <div class="row p-0">
+    <div class="col d-flex justify-content-between">
+
+      <img [src]="usuario?.profpicture" alt="Profile Image" id="profile-img" class="rounded-circle px-1" style="width: 130px; height: 130px;">
+
+      <div class="d-flex flex-row">
+        <app-profile-header-modal class="editarPerfil" [usuario]="usuario" *ngIf="isItMe"></app-profile-header-modal>
+        <p class="follow" *ngIf="!isItMe" (click)="follow()">Seguir</p>
+        <i class="cursor borrarPerfil bi bi-trash-fill text-danger" *ngIf="this.usuarioLogged.role === 1" (click)="deleteAccount()"></i>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="row my-2 p-0 container">
+    <div class="col">
+      <span class="display-6 fw-bold">{{usuario?.username}}</span>
+    </div>
+    <div class="row">
+      <div class="col text-secondary small">@{{usuario?.name}}</div>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col">
+      {{usuario?.descripcion}}
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col">
+      <span class="text-secondary d-block"> <i class="fa-solid fa-cake-candles"></i> Cumpleaños {{usuario?.cumpleanios | date}}</span>
+    </div>
+    <div class="col">
+      <span class="text-secondary d-block"> <i class="fa-regular fa-calendar-days"></i> Miembro desde {{usuario?.diaUnion | date}}</span>
+    </div>
+  </div>
+
+  <div class="row my-2">
+    <div class="col d-flex justify-content-start">
+      <span class="me-2 fw-bold"> {{usuario?.seguidores}} <span class="text-secondary fw-normal">Seguidores</span> </span>
+      <span class="fw-bold"> {{usuario?.seguidos}} <span class="text-secondary fw-normal">Siguiendo</span> </span>
+    </div>
+  </div>
+</div>
+

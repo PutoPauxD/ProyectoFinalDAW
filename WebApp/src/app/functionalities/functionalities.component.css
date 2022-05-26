@@ -1,0 +1,25 @@
+.noscrollable{
+  overflow: scroll;
+  max-height: 100vh;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.noscrollable::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.noscrollable {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.zindextop{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  z-index: 1;
+}

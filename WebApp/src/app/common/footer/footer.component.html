@@ -1,1 +1,35 @@
-<p>footer works!</p>
+<div class="container">
+  <footer class="py-3">
+    <ul class="nav justify-content-center d-flex flex-row justify-content-around">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">
+          <i class="bi bi-house-fill me-2 h1"></i>
+        </a>
+      </li>
+
+      <li class="nav-item cursor">
+        <a class="nav-link" routerLink="/search">
+          <i class="bi bi-search me-2 h1"></i>
+        </a>
+      </li>
+      <li class="nav-item cursor">
+        <a class="nav-link" (click)="userProfile()">
+          <i class="bi bi-person-fill me-2 h1"></i>
+        </a>
+      </li>
+
+      <li class="nav-item cursor" >
+        <a class="nav-link" routerLink="/chats/">
+          <i class="bi bi-envelope-fill me-2 h1"></i>
+        </a>
+      </li>
+
+      <li class="nav-item cursor">
+        <a class="nav-link" (click)="logout()">
+          <i class="bi bi-door-closed-fill me-2 h1"></i>
+        </a>
+    </li>
+
+    </ul>
+  </footer>
+</div>

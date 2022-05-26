@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '', loadChildren: () => import('./auth/public.module').then( m => m.PublicModule)
   },
   {
-    path: 'aull', loadChildren: () => import('./functionalities/functionalities.module').then( m => m.FunctionalitiesModule), canActivate: [AuthGuard]
+    path: '', loadChildren: () => import('./functionalities/functionalities.module').then( m => m.FunctionalitiesModule), canActivate: [AuthGuard]
   },
 ];
 

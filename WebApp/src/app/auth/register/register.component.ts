@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PublicService } from 'src/app/services/public.service';
 
 @Component({
@@ -15,12 +16,13 @@ export class RegisterComponent {
     email: '',
     password: '',
     profpicture: '',
+    cumpleanios: '',
   };
 
   constructor(private publicService: PublicService, private router: Router) { }
 
   register() {
     this.publicService.regUser(this.usuario).subscribe();
-    console.log(this.usuario);
+    this.router.navigateByUrl('/login')
   }
 }
