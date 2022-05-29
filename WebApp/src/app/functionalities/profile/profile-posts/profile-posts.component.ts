@@ -11,15 +11,19 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./profile-posts.component.css']
 })
 export class ProfilePostsComponent {
-  data:any;
+  data:any[];
   public usuario: UsuarioModel
 
-  constructor(private homeService: HomeService, private postActivity: PostActivityService, private profileService: ProfileService, private userService: UserService) {
+  constructor(private homeService: HomeService,
+              private postActivity: PostActivityService,
+              private profileService: ProfileService,
+              private userService: UserService) {
     this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
       next: (user: UsuarioModel) => {
       this.homeService.getHomeByUser(user.username).subscribe({
-          next: (res: any) => {
+          next: (res: any[]) => {
             this.data = res;
+            console.log(this.data, res)
             this.data.forEach(data => {
               this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
               this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})

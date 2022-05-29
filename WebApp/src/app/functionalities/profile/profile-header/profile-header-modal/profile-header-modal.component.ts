@@ -27,13 +27,13 @@ export class ProfileHeaderModalComponent {
     this.showEditModal = !this.showEditModal;
   }
 
-  guardarFotoPerfil() {
+  guardarFotoPerfil(): void {
     this.userService.changeUser(this.usuario).subscribe(
       {next: () => this.usuario.profpicture = this.prevImagenRec}
     );
   }
 
-  recortarImagen(imagen: ImageCroppedEvent) {
+  recortarImagen(imagen: ImageCroppedEvent): void {
     this.prevImagenRec = imagen.base64;
   }
 

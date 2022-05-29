@@ -9,6 +9,7 @@ import { ChatComponent } from './chat/chat.component';
 import { GeneratePostComponent } from './generate-post/generate-post.component';
 import { FormsModule } from '@angular/forms';
 import { FoundUserComponent } from './found-user/found-user.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -20,7 +21,8 @@ import { FoundUserComponent } from './found-user/found-user.component';
     PostComponent,
     ChatComponent,
     GeneratePostComponent,
-    FoundUserComponent
+    FoundUserComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { FoundUserComponent } from './found-user/found-user.component';
     PostComponent,
     ChatComponent,
     GeneratePostComponent,
-    FoundUserComponent
+    FoundUserComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule { }

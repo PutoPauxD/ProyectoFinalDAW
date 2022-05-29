@@ -4,4 +4,6 @@ export interface PostModel{
   text: string;
   likes: number;
   shares: number;
+  hasMedia: number;
+  media?: string;
 }

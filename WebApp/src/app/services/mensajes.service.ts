@@ -11,11 +11,12 @@ export class MensajesService {
 
   constructor(private http: HttpClient) { }
 
-  getMensajesByUsers(msjobj: any):Observable<any> {
+  getMensajesByUsers(msjobj: any): Observable<Object> {
     return this.http.get(this.url + msjobj.userId, msjobj.id_recibe);
   }
 
-  getChatsByUser(userId) {
+  getChatsByUser(userId: number): Observable<Object> {
+    console.log(userId)
     return this.http.get(this.url+userId+'/chats');
   }
 

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { single } from 'rxjs';
-import { PostModel } from 'src/app/model/post.model';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostActivityService } from 'src/app/services/post-activity.service';
 import { PublicService } from 'src/app/services/public.service';
@@ -16,7 +14,9 @@ export class HomeComponent {
   usuario: UsuarioModel;
   post: any;
 
-  constructor(private homeService: HomeService, private postActivity: PostActivityService, private publicService: PublicService) {
+  constructor(private homeService: HomeService,
+              private postActivity: PostActivityService,
+              private publicService: PublicService) {
     this.usuario = this.publicService.getUserLogged();
 
     this.homeService.getHome(this.usuario.id).subscribe({

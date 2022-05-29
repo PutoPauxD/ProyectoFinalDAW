@@ -1,0 +1,17 @@
+<div class="p-0 m-0 card text-white bg-dark border-0">
+  <div class="card-body p-0">
+    <div class=" d-flex">
+      <div class="mx-2">
+          <img class="rounded-circle img-fluid cursor" style="width: 4rem;" src="{{data?.profpicture}}" alt="">
+      </div>
+      <div class="container d-flex align-items-center px-0 mt-2">
+            <p *ngIf="data?.type === 0" class="ms-1 fw-light d-inline">@{{data?.name}} le ha dado like a tu post!</p>
+            <p *ngIf="data?.type === 1" class="ms-1 fw-light d-inline">@{{data?.name}} ha compartido tu post!</p>
+      </div>
+    </div>
+    <div class="mt-2 ms-2">
+      <span class="text-secondary">{{ data?.text }}</span>
+    </div>
+  </div>
+  <hr>
+</div>

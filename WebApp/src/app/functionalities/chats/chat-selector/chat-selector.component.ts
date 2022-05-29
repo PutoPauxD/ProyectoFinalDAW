@@ -9,13 +9,12 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './chat-selector.component.html',
   styleUrls: ['./chat-selector.component.css']
 })
-export class ChatSelectorComponent  {
+export class ChatSelectorComponent {
 
   public data: UsuarioModel[];
 
   constructor(private publicService: PublicService, private mensajeService: MensajesService, private userService: UserService) {
     this.data = [];
-
     this.mensajeService.getChatsByUser(this.publicService.getUserLogged().id).subscribe({
       next: (ids: any) => {
         ids.forEach(id => {

@@ -17,7 +17,10 @@ export class ProfileSharedPostsComponent {
   dataPosts: PostModel[];
   usuario: UsuarioModel;
 
-  constructor(private postActivityService: PostActivityService, private homeService: HomeService, private profileService: ProfileService, private userService: UserService) {
+  constructor(private postActivityService: PostActivityService,
+              private homeService: HomeService,
+              private profileService: ProfileService,
+              private userService: UserService) {
     this.dataPosts = [];
     this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
       next: (user: UsuarioModel) => {

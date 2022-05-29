@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { loginUsuarioModel } from 'src/app/model/usuario.model';
 import { PublicService } from 'src/app/services/public.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class LoginComponent {
 
-  public usuario = {
+  public usuario: loginUsuarioModel = {
     email: '',
     password: '',
   };
@@ -18,7 +19,7 @@ export class LoginComponent {
     this.publicService.setLoggedIn(false);
   }
 
-  login() {
+  login(): void {
     this.publicService.authUser(this.usuario).subscribe({
       next: (loggedUsser) => {
         if (loggedUsser) {
@@ -30,3 +31,4 @@ export class LoginComponent {
     })
   }
 }
+

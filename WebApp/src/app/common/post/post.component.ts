@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   @Input() index: number;
   @Input() data: any;
   public liked: boolean;
+  public shared: boolean;
 
   constructor(private postActivityService: PostActivityService,
               private postService: PostService,
@@ -28,34 +29,36 @@ export class PostComponent implements OnInit {
     this.postActivityService.checkActivityl(this.data.id_post, this.usuario.id).subscribe(resp => {
       if (resp) {this.liked = true}
     });
+    this.postActivityService.checkActivitys(this.data.id_post, this.usuario.id).subscribe(resp => {
+      if (resp) {this.shared = true}
+    });
   }
 
-
-  shareClicked() {
+  shareClicked(): void {
     this.postActivityService.checkActivitys(this.data.id_post, this.usuario.id).subscribe(resp => {
       if (resp) {
-        this.liked = false;
+        this.shared = false;
         const activity = {
           post_id: this.data.id_post,
           user_id: this.usuario.id,
-          type: 0,
+          type: 1,
         }
-        this.data.likes -= 1;
+        this.data.shares -= 1;
         this.postActivityService.deleteActivity(activity).subscribe();
       } else {
-        this.liked = true;
+        this.shared = true;
         const activity = {
           post_id: this.data.id_post,
           user_id: this.usuario.id,
-          type: 0,
+          type: 1,
         }
-        this.data.likes += 1;
+        this.data.shares += 1;
         this.postActivityService.postActivity(activity).subscribe();
       }
     })
   }
 
-  likeClicked() {
+  likeClicked():void {
     this.postActivityService.checkActivityl(this.data.id_post, this.usuario.id).subscribe(resp => {
       if (resp) {
         this.liked = false;
@@ -79,7 +82,7 @@ export class PostComponent implements OnInit {
     })
   }
 
-  deletePost() {
+  deletePost():void {
     this.postService.deletePost(this.data.id_post).subscribe();
   }
 

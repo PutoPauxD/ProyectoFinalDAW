@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuarioModel } from 'src/app/model/usuario.model';
+import { registerUsuarioModel, UsuarioModel } from 'src/app/model/usuario.model';
 import { PublicService } from 'src/app/services/public.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class RegisterComponent {
 
-  public usuario = {
+  public usuario :registerUsuarioModel = {
     name: '',
     username: '',
     email: '',
     password: '',
     profpicture: '',
-    cumpleanios: '',
+    cumpleanios: new Date,
   };
 
   constructor(private publicService: PublicService, private router: Router) { }

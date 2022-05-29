@@ -19,3 +19,18 @@ export interface UsuarioModel{
   profpicture?: string;
   headerpicture?: string;
 }
+
+export interface loginUsuarioModel{
+  email: string;
+  password: string;
+}
+
+export interface registerUsuarioModel{
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  profpicture: string;
+  cumpleanios: Date;
+
+}

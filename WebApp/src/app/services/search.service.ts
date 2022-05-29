@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SearchService {
   constructor(private http: HttpClient) {}
 
   //Buscar por usuario
-  search(username) {
+  search(username: string): Observable<Object> {
     return this.http.get(this.url + username);
   }
 

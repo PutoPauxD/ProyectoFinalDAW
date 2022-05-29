@@ -6,7 +6,9 @@
         </div>
         <div class="container-fluid px-0 m-1 row">
           <input type="text" class="form-control w-75" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoPost.text">
-          <span class="input-group-text imgEnviar w-25" id="basic-addon2" (click)="generarPost()"> <img src="assets/Send.png" width="20px"> </span>
+          <span class="input-group-text imgEnviar w-25" id="basic-addon2" (click)="generarPost()"> <img src="assets/Send.png" width="20px"></span>
+          <input id="inputFileToLoad" type="file" (change)="imageUpload($event)" />
+
         </div>
     </div>
   </div>

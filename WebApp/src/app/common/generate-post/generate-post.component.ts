@@ -21,8 +21,24 @@ export class GeneratePostComponent {
       text: '',
       likes: 0,
       shares: 0,
+      hasMedia: 0,
+      media: '',
     };
   };
+
+  imageUpload(event: any): void {
+    var file = event.target.files.length;
+    for(let i=0;i<file;i++)
+    {
+       var reader = new FileReader();
+       reader.onload = (event:any) =>
+       {
+          this.nuevoPost.media = event.target.result;
+          this.nuevoPost.hasMedia = 1;
+       }
+       reader.readAsDataURL(event.target.files[i]);
+    }
+  }
 
   public generarPost(): void {
     this.postService.createPost(this.nuevoPost).subscribe();

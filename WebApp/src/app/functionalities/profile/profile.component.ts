@@ -13,7 +13,10 @@ export class ProfileComponent  {
 
   public usuario: UsuarioModel;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService, private profileService: ProfileService) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private userService: UserService,
+              private profileService: ProfileService) {
     this.activatedRoute.params.subscribe((resp: any) => {
       this.profileService.setidProfileSelected(resp.id)
       this.router.navigate(['/profile/' + resp.id + '/post'])

@@ -13,7 +13,7 @@ export class FooterComponent  {
   public usuario: UsuarioModel
 
   constructor(private publicService: PublicService, private router: Router) {
-    this.usuario = this.publicService.getUserLogged()
+    this.usuario = this.publicService.getUserLogged();
   }
 
   public logout(): void {

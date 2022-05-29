@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,21 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   //Get Posts
-  getHome(id) {
+  getHome(id): Observable<Object> {
     return this.http.get(this.url + id);
   }
 
   //Get Posts
-  getHomeByUser(username) {
+  getHomeByUser(username): Observable<Object> {
     return this.http.get(this.url + 'profile/' + username);
   }
 
   //Get Post Data by idPost
-  getHomeByPostId(id) {
+  getHomeByPostId(id): Observable<Object> {
     return this.http.get(this.url + 'post/' + id);
+  }
+
+  getHomeByPostIdWithImage(id): Observable<Object> {
+    return this.http.get(this.url + 'imagepost/' + id);
   }
 }

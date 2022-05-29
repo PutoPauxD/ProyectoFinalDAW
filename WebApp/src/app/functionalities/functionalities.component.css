@@ -14,11 +14,11 @@
 }
 
 .zindextop{
+  border-top: 1px solid darkslategrey;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: black;
   color: white;
   text-align: center;
   z-index: 1;

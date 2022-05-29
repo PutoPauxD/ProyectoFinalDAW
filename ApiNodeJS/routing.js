@@ -10,7 +10,7 @@ const conexion = require("./config/conexion");
 //Datos para todos los posts
 routing.get("/home/:id", async(req, res) => {
     const id = req.params.id;
-    const sql = `SELECT u.username, u.id, u.name, p.id_post, p.text, u.profpicture FROM follows f, users u INNER JOIN post p ON p.id_user = u.id WHERE u.id = f.followed AND f.following = ${id} UNION SELECT u.username, u.id, u.name, p.id_post, p.text, u.profpicture FROM follows f, users u INNER JOIN post p ON p.id_user = u.id WHERE p.id_user = ${id} ORDER BY id_post DESC`
+    const sql = `SELECT u.username, u.id, u.name, p.id_post, p.text, u.profpicture, p.hasMedia, p.media FROM follows f, users u INNER JOIN post p ON p.id_user = u.id WHERE u.id = f.followed AND f.following = ${id} UNION SELECT u.username, u.id, u.name, p.id_post, p.text, u.profpicture, p.hasMedia, p.media FROM follows f, users u INNER JOIN post p ON p.id_user = u.id WHERE p.id_user = ${id} ORDER BY id_post DESC`
     const rows = await conexion.query(sql, [id]);
     res.setHeader("Content-Type", "application/json");
     res.status(200).send(JSON.stringify(rows, null, 4));
@@ -19,7 +19,7 @@ routing.get("/home/:id", async(req, res) => {
 //Datos para todos los posts de usuario concreto
 routing.get("/home/profile/:username", async(req, res) => {
     const username = req.params.username;
-    const sql = `SELECT u.username, u.name, p.id_post, p.text, u.profpicture  FROM users u INNER JOIN post p ON p.id_user = u.id where u.username = "${username}" ORDER BY p.id_post DESC `
+    const sql = `SELECT u.username, u.name, p.id_post, p.text, u.profpicture, p.hasMedia, p.media FROM users u INNER JOIN post p ON p.id_user = u.id where u.username = "${username}" ORDER BY p.id_post DESC `
     const rows = await conexion.query(sql, [username]);
     res.setHeader("Content-Type", "application/json");
     res.status(200).send(JSON.stringify(rows, null, 4));
@@ -28,7 +28,16 @@ routing.get("/home/profile/:username", async(req, res) => {
 //Datos para post por id de post
 routing.get("/home/post/:id", async(req, res) => {
     const id = req.params.id;
-    const sql = `SELECT u.username, u.name, p.id_post, p.text, u.profpicture  FROM users u INNER JOIN post p ON p.id_user = u.id where p.id_post = "${id}" ORDER BY p.id_post DESC `
+    const sql = `SELECT u.username, u.name, p.id_post, p.text, u.profpicture, p.hasMedia, p.media FROM users u INNER JOIN post p ON p.id_user = u.id where p.id_post = "${id}" ORDER BY p.id_post DESC `
+    const rows = await conexion.query(sql, [id]);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(JSON.stringify(rows[0], null, 4));
+});
+
+//Datos para post por id de post
+routing.get("/home/imagepost/:id", async(req, res) => {
+    const id = req.params.id;
+    const sql = `SELECT u.username, u.name, p.id_post, p.text, u.profpicture, p.hasMedia, p.media FROM users u INNER JOIN post p ON p.id_user = u.id where p.id_post = "${id}" AND p.hasMedia = 1 ORDER BY p.id_post DESC `
     const rows = await conexion.query(sql, [id]);
     res.setHeader("Content-Type", "application/json");
     res.status(200).send(JSON.stringify(rows[0], null, 4));
@@ -64,7 +73,9 @@ routing.get("/post/:id/all", async (req, res) => {
 routing.post("/post/", async (req, res) => {
     const {text} = req.body;
     const {id_user} = req.body;
-    const sql = `insert into post(id_user, text) values (${id_user}, "${text}")`;
+    const {hasMedia} = req.body;
+    const {media} = req.body;
+    const sql = `insert into post(id_user, text, hasMedia, media) values (${id_user}, "${text}", ${hasMedia}, "${media}")`;
     await conexion.query(sql);
     res.status(200).send();
 })
@@ -284,4 +295,37 @@ routing.post("/follow", async (req, res) => {
     await conexion.query(sql);
     res.status(200).send();
 }); 
+
+//Borrar un follow.
+routing.delete("/follow/:loggedUserId/:id", async (req, res) => {
+    const {loggedUserId, id} = req.params;
+    const sql = `delete from follows where following = ${loggedUserId} AND followed = ${id}`;
+    await conexion.query(sql);
+    res.status(200).send();
+}); 
+
+//Comprobar si se sigue
+routing.get("/follow/follows/:id/:loggedUserId", async (req, res) => {
+    const id = req.params.id;
+    const loggedUserId = req.params.loggedUserId;
+    const sql = "select * from follows where following = ? AND followed = ?";
+    const rows = await conexion.query(sql, [loggedUserId, id]);
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send(JSON.stringify(rows[0], null, 4));
+});
+
+/***************************/
+/***************************/
+/****** NOTIFICATION *******/
+/***************************/
+/***************************/
+
+
+//Devuelve las notificaciones
+routing.get("/notification/:id", async (req, res) => {
+    const user_id = req.params.id;
+    const sql = `SELECT u.name, u.profpicture, p.text, pa.type FROM post p, users u, postactivity pa WHERE p.id_user = u.id AND p.id_post = pa.post_id AND pa.user_id = ? ORDER BY p.id_post DESC`;
+    const rows = await conexion.query(sql, [user_id]);
+    res.status(200).send(JSON.stringify(rows, null, 4));
+});
 module.exports = routing;

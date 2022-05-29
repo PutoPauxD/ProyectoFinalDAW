@@ -8,8 +8,9 @@
           <p class="text-white fw-bold d-inline">{{user?.username}}
             <p class="text-secondary ms-1 fw-light d-inline">@{{user?.name}}</p>
       </div>
+      <div *ngIf = "!follows" class="follow justify-content-center bg-dark text-white" (click)="follow()">Seguir</div>
+      <div *ngIf = "follows" class="follow justify-content-center bg-white text-dark" (click)="unfollow()">Siguiendo</div>
     </div>
   </div>
-  <div class="follow" (click)="follow()">Seguir</div>
 </div>
 <hr>

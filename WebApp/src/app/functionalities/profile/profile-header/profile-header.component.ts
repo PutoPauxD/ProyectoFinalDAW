@@ -15,8 +15,12 @@ export class ProfileHeaderComponent implements OnChanges {
   @Input() public usuario: UsuarioModel;
   public usuarioLogged: UsuarioModel;
   public isItMe: boolean;
+  public follows: boolean;
 
-  constructor(private router: Router, private publicService: PublicService, private followService: FollowService, private usuarioService: UserService) {
+  constructor(private router: Router,
+              private publicService: PublicService,
+              private followService: FollowService,
+              private usuarioService: UserService) {
     this.usuarioLogged = this.publicService.getUserLogged();
   }
 
@@ -25,19 +29,31 @@ export class ProfileHeaderComponent implements OnChanges {
   }
 
 
-  follow() {
-    this.followService.setFollow(this.usuario.id, this.usuarioLogged.id).subscribe();
+  ngOnInit(): void {
+    this.followService.checkActivityFollows(this.usuario.id, this.publicService.getUserLogged().id).subscribe({
+      next: res => {if(res) {this.follows = true}}
+    });
   }
 
-  deleteAccount() {
+  follow(): void {
+    this.followService.setFollow(this.usuario.id, this.publicService.getUserLogged().id).subscribe();
+    this.follows = true;
+  }
+
+  unfollow(): void {
+    this.followService.unsetFollow(this.usuario.id, this.publicService.getUserLogged().id).subscribe();
+    this.follows = false;
+  }
+  deleteAccount(): void {
     this.usuarioService.deleteUser(this.usuario.id);
+    this.router.navigateByUrl('/home')
   }
 
   navigate(route: string): void {
     this.router.navigate([route]);
   }
 
-  private checkIsItMe() {
+  private checkIsItMe(): void {
     if(this.usuario.id === this.usuarioLogged.id)
       {this.isItMe = true}
     else

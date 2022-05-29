@@ -8,12 +8,13 @@ import { ChatsModule } from './chats/chats.module';
 import { SearchModule } from './search/search.module';
 import { ProfileModule } from './profile/profile.module';
 import { HomeModule } from './home/home.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 
 
 @NgModule({
   declarations: [
-    FunctionalitiesComponent
+    FunctionalitiesComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { HomeModule } from './home/home.module';
     ProfileModule,
     SearchModule,
     ChatsModule,
+    NotificationsModule
   ]
 })
 export class FunctionalitiesModule { }
