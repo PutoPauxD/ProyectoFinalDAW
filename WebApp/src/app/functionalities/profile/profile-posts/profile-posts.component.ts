@@ -23,7 +23,6 @@ export class ProfilePostsComponent {
       this.homeService.getHomeByUser(user.username).subscribe({
           next: (res: any[]) => {
             this.data = res;
-            console.log(this.data, res)
             this.data.forEach(data => {
               this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
               this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})

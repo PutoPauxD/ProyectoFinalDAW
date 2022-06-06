@@ -15,7 +15,7 @@ export class NotificationsComponent {
   constructor(private notificationService: NotificationService, private publicService: PublicService) {
 
     this.notificationService.getNotification(this.publicService.getUserLogged().id).subscribe({
-      next: (activity) => {this.data = activity; console.log(activity)}
+      next: (activity) => this.data = activity
     })
   }
 

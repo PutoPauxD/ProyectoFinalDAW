@@ -18,6 +18,11 @@ export class UserService {
     return this.http.get(this.url);
   }
 
+  //Get Users
+  getUsersToFollow(id: string): Observable<Object> {
+    return this.http.get(this.url + 'tofollow/' + id);
+  }
+
   //Get User
   getUser(id: number): Observable<Object> {
     return this.http.get(this.url+id);

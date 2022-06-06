@@ -32,5 +32,4 @@ export interface registerUsuarioModel{
   password: string;
   profpicture: string;
   cumpleanios: Date;
-
 }

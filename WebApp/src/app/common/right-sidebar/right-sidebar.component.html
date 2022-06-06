@@ -1,1 +1,3 @@
-<p>right-sidebar works!</p>
+<h6 class="h6 mt-2">¿A quien seguir?</h6>
+<p>Te recomendamos seguir a los siguientes usuarios</p>
+<app-found-user *ngFor="let user of toFollow" [user]="user"></app-found-user>
