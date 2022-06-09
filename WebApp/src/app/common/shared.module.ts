@@ -10,6 +10,7 @@ import { GeneratePostComponent } from './generate-post/generate-post.component';
 import { FormsModule } from '@angular/forms';
 import { FoundUserComponent } from './found-user/found-user.component';
 import { NotificationComponent } from './notification/notification.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -22,7 +23,8 @@ import { NotificationComponent } from './notification/notification.component';
     ChatComponent,
     GeneratePostComponent,
     FoundUserComponent,
-    NotificationComponent
+    NotificationComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { NotificationComponent } from './notification/notification.component';
     ChatComponent,
     GeneratePostComponent,
     FoundUserComponent,
-    NotificationComponent
+    NotificationComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

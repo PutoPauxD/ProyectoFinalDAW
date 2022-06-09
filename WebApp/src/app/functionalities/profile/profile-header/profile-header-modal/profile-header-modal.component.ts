@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { take } from 'rxjs';
 import { UsuarioModel } from 'src/app/model/usuario.model';
@@ -16,11 +16,11 @@ export class ProfileHeaderModalComponent {
   public prevImagenRec: any;
   public imgChangeEvt: any;
   public showEditModal: boolean;
-  public username: FormControl;
+  public username: UntypedFormControl;
 
 
   constructor(private userService: UserService) {
-      this.username = new FormControl('');
+      this.username = new UntypedFormControl('');
   }
 
   public onShowEditModal(): void {

@@ -8,7 +8,7 @@ import { PostModel } from '../model/post.model';
 })
 export class PostService {
 
-  private url = 'http://localhost:3000/api/post/'
+  private url = 'http://192.168.168.153:3000/api/post/'
 
   constructor(private http: HttpClient) { }
 

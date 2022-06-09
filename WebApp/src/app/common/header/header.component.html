@@ -1,0 +1,20 @@
+<div class="container-fluid p-0">
+    <ul class="nav d-flex flex-row justify-content-center justify-content-between">
+      <li class="nav-item" style="width: 10%;">
+        <img src="assets/aull.png" style="width: 6vh;" alt="">
+      </li>
+      <li class="nav-item cursor align-self-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <i class="bi bi-list"></i>
+      </li>
+    </ul>
+</div>
+
+<div class="offcanvas offcanvas-end" [ngClass]="theme" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header" >
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <span type="button" class="text-reset mb-2" data-bs-dismiss="offcanvas" aria-label="Close">X</span>
+  </div>
+  <div class="offcanvas-body">
+    <app-right-sidebar></app-right-sidebar>
+  </div>
+</div>

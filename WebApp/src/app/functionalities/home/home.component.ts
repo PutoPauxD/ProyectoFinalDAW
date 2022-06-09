@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostActivityService } from 'src/app/services/post-activity.service';
+import { PostService } from 'src/app/services/post.service';
 import { PublicService } from 'src/app/services/public.service';
 import { HomeService } from '../../services/home.service';
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MensajesService {
 
-  private url = 'http://localhost:3000/api/mensajes/'
+  private url = 'http://192.168.168.153:3000/api/mensajes/'
 
   constructor(private http: HttpClient) { }
 

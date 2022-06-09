@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostModel } from 'src/app/model/post.model';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostActivityService } from 'src/app/services/post-activity.service';
 import { PostService } from 'src/app/services/post.service';
@@ -18,13 +19,22 @@ export class PostComponent implements OnInit {
   public liked: boolean;
   public shared: boolean;
   public theme: string;
+  public nuevoPost: PostModel;
 
   constructor(private postActivityService: PostActivityService,
               private postService: PostService,
               private publicService: PublicService,
-              private router: Router) {
+              ) {
                 this.usuario = this.publicService.getUserLogged();
                 this.theme = localStorage.getItem('theme');
+                this.nuevoPost = {
+                  id_user: this.usuario.id,
+                  text: '',
+                  likes: 0,
+                  shares: 0,
+                  hasMedia: 0,
+                  media: '',
+                };
               }
 
   ngOnInit(): void {
@@ -55,7 +65,9 @@ export class PostComponent implements OnInit {
           type: 1,
         }
         this.data.shares += 1;
+        this.nuevoPost.text += 'He compartido el siguiente post! \n' + this.data.text;
         this.postActivityService.postActivity(activity).subscribe();
+        this.postService.createPost(this.nuevoPost).subscribe();
       }
     })
   }

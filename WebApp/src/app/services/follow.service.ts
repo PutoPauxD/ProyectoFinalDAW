@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FollowService {
 
-  private url = 'http://localhost:3000/api/follow'
+  private url = 'http://192.168.168.153:3000/api/follow'
 
   constructor(private http: HttpClient) { }
 
