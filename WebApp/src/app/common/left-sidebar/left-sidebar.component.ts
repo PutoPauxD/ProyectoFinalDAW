@@ -17,6 +17,7 @@ export class LeftSidebarComponent  {
   }
 
   public logout(): void {
+    localStorage.setItem('user', '');
     this.publicService.setUserLogged({});
     this.publicService.setLoggedIn(false);
     this.router.navigateByUrl('/login');

@@ -1,2 +1,4 @@
-<app-post *ngFor="let data of dataPosts" [data]="data"></app-post>
-<p *ngIf="dataPosts.length === 0">Este usuario todavía no le ha dado like o share a un post.</p>
+<div class="container-fluid">
+  <app-post *ngFor="let data of dataPosts" [data]="data"></app-post>
+  <p *ngIf="dataPosts.length === 0">Este usuario todavía no le ha dado like o share a un post.</p>
+</div>

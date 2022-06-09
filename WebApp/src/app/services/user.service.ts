@@ -35,4 +35,8 @@ export class UserService {
   deleteUser(id: number): Observable<Object> {
     return this.http.delete(this.url + id);
   }
+
+  getNumberPost(id: number): Observable<Object> {
+    return this.http.get(this.url + 'numPost/' + id);
+  }
 }

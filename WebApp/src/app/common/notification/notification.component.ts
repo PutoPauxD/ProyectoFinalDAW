@@ -8,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NotificationComponent implements OnInit {
 
   @Input() public data: any;
+  public theme: string;
 
-  constructor() { }
+  constructor() {
+    this.theme = localStorage.getItem('theme')
+  }
 
   ngOnInit(): void {
   }

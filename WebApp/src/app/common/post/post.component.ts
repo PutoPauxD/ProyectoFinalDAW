@@ -17,12 +17,14 @@ export class PostComponent implements OnInit {
   @Input() data: any;
   public liked: boolean;
   public shared: boolean;
+  public theme: string;
 
   constructor(private postActivityService: PostActivityService,
               private postService: PostService,
               private publicService: PublicService,
               private router: Router) {
                 this.usuario = this.publicService.getUserLogged();
+                this.theme = localStorage.getItem('theme');
               }
 
   ngOnInit(): void {
@@ -86,9 +88,5 @@ export class PostComponent implements OnInit {
     this.postService.deletePost(this.data.id_post).subscribe();
   }
 
-  navigate(route: string): void {
-    route += this.data.id;
-    this.router.navigate([route]);
-  }
 }
 

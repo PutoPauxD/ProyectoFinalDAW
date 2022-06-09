@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PublicRoutingModule } from './public-routing.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -13,6 +14,7 @@ import { PublicRoutingModule } from './public-routing.module';
     RegisterComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,

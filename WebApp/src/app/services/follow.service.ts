@@ -34,4 +34,12 @@ export class FollowService {
     return this.http.get(this.url + '/follows/' + id + '/' + loggedUserId,);
   }
 
+  getFollowers(id: number): Observable<Object>{
+    return this.http.get(this.url + '/followers/' + id)
+  }
+
+  getFollowing(id: number): Observable<Object>{
+    return this.http.get(this.url + '/following/' + id)
+  }
+
 }

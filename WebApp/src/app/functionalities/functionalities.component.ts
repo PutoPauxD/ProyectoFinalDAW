@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FunctionalitiesComponent  {
 
-  constructor() { }
+  public theme: string;
 
-
+  constructor() {
+    if (localStorage.getItem('theme')) {
+      this.theme = localStorage.getItem('theme');
+    } else {
+      localStorage.setItem('theme', 'bg-dark text-white');
+    }
+  }
 }

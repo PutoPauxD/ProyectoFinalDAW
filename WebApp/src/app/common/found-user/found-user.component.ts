@@ -12,10 +12,12 @@ export class FoundUserComponent implements OnInit {
 
   @Input() user;
   public follows: boolean;
-
+  public theme: string;
   constructor(private router: Router,
               private followService: FollowService,
-              private publicService: PublicService) { }
+              private publicService: PublicService) {
+                this.theme = localStorage.getItem('theme');
+              }
 
   ngOnInit(): void {
     this.followService.checkActivityFollows(this.user.id, this.publicService.getUserLogged().id).subscribe({

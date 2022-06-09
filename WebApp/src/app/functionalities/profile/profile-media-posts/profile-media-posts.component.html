@@ -1,2 +1,4 @@
-<app-post *ngFor="let data of dataPosts" [data]="data"></app-post>
-<p *ngIf="dataPosts.length === 0">Este usuario todavía no ha subido un post con una imagen.</p>
+<div class="container-fluid">
+  <app-post *ngFor="let data of dataPosts" [data]="data"></app-post>
+  <p *ngIf="dataPosts.length === 0">Este usuario todavía no ha subido un post con una imagen.</p>
+</div>

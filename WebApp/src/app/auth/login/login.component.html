@@ -8,6 +8,7 @@
         <input type="email" class="form-control my-2" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
         <label style="float:left">Contraseña</label>
         <input type="password" class="form-control my-2" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
+        <p *ngIf="notLogged" class="text-danger">El usuario es incorrecto o no existe</p>
         <button class="btn btn-primary my-2 w-100" (click)="login()">Acceder</button>
         <label>Aun no tienes cuenta? <a routerLink="/register">Registrarse</a></label>
     </div>

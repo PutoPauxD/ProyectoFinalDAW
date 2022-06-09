@@ -1,3 +1,5 @@
 <h6 class="h6 mt-2">¿A quien seguir?</h6>
 <p>Te recomendamos seguir a los siguientes usuarios</p>
 <app-found-user *ngFor="let user of toFollow" [user]="user"></app-found-user>
+
+<div class="pointer position-absolute bottom-0 end-0 m-5 border rounded-circle p-2 bg-white" (click)="changeTheme()"><i class="bi bi-moon text-dark ms-1 h3"></i></div>

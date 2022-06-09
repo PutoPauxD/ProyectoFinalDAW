@@ -33,6 +33,7 @@ export class ProfileHeaderComponent implements OnChanges {
     this.followService.checkActivityFollows(this.usuario.id, this.publicService.getUserLogged().id).subscribe({
       next: res => {if(res) {this.follows = true}}
     });
+
   }
 
   follow(): void {

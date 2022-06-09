@@ -10,7 +10,7 @@ import { PublicService } from 'src/app/services/public.service';
   styleUrls: ['./generate-post.component.css']
 })
 export class GeneratePostComponent {
-
+  public theme: string;
   public loggedUser: UsuarioModel;
   public nuevoPost: PostModel;
 
@@ -24,6 +24,7 @@ export class GeneratePostComponent {
       hasMedia: 0,
       media: '',
     };
+    this.theme = localStorage.getItem('theme');
   };
 
   imageUpload(event: any): void {
