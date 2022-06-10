@@ -1,0 +1,25 @@
+.imgEnviar:active{
+  transform: scale(0.9);
+}
+
+.enviado{
+  display: block;
+  float: right;
+  background-color: teal;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  padding: 3px;
+}
+
+.recibido{
+  display: block;
+  float: left;
+  background-color: grey;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+  padding: 3px;
+}

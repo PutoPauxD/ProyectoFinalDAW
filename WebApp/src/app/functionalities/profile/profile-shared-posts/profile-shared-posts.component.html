@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid noscrollable" id="infinito">
   <app-post *ngFor="let data of dataPosts" [data]="data"></app-post>
   <p *ngIf="dataPosts.length === 0">Este usuario todavía no le ha dado like o share a un post.</p>
 </div>

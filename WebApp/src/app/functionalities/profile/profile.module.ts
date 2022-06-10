@@ -13,6 +13,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileHeaderModalComponent } from './profile-header/profile-header-modal/profile-header-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ProfileHeaderModalComponent
   ],
   imports: [
+    InfiniteScrollModule,
     CommonModule,
     RouterModule,
     FormsModule,

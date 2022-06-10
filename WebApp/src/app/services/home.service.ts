@@ -7,26 +7,26 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private url = 'http://192.168.168.153:3000/api/home/'
+  private url = 'http://localhost:3000/api/home'
 
   constructor(private http: HttpClient) { }
 
   //Get Posts
-  getHome(id): Observable<Object> {
-    return this.http.get(this.url + id);
+  getHome(id, contador): Observable<Object> {
+    return this.http.get(this.url + '/'  + id + '/' + contador);
   }
 
   //Get Posts
-  getHomeByUser(username): Observable<Object> {
-    return this.http.get(this.url + 'profile/' + username);
+  getHomeByUser(username: string, contador): Observable<Object> {
+    return this.http.get(this.url + '/'  + 'profile/' + username + '/' + contador);
   }
 
   //Get Post Data by idPost
   getHomeByPostId(id): Observable<Object> {
-    return this.http.get(this.url + 'post/' + id);
+    return this.http.get(this.url + 'asd/'  + 'post/' + id);
   }
 
-  getHomeByPostIdWithImage(id): Observable<Object> {
-    return this.http.get(this.url + 'imagepost/' + id);
+  getHomeByPostIdWithImage(id, n: number): Observable<Object> {
+    return this.http.get(this.url + 'asd/'  + 'imagepost/' + id + '/' + n);
   }
 }

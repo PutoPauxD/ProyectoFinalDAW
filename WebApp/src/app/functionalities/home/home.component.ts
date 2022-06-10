@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostActivityService } from 'src/app/services/post-activity.service';
-import { PostService } from 'src/app/services/post.service';
 import { PublicService } from 'src/app/services/public.service';
 import { HomeService } from '../../services/home.service';
 
@@ -11,19 +10,35 @@ import { HomeService } from '../../services/home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  dataPosts;
+  dataPosts: any[];
   usuario: UsuarioModel;
   post: any;
+  public contador: number = 1;
+  direction: string = ""
 
   constructor(private homeService: HomeService,
               private postActivity: PostActivityService,
-              private publicService: PublicService) {
+              private publicService: PublicService,
+              ) {
+    this.dataPosts = [];
     this.usuario = this.publicService.getUserLogged();
+    this.homeService.getHome(this.usuario.id, this.contador).subscribe({
+      next: (dataBack: any[] ) => {
+        dataBack.forEach(singleData => {
+          this.dataPosts.push(singleData);
+          this.postActivity.getActivityShares(singleData.id_post).subscribe({next: (shares) => singleData.shares = shares as number});
+          this.postActivity.getActivityLikes(singleData.id_post).subscribe({next: (likes) => singleData.likes = likes as number});
+        })
+      }
+    })
+  }
 
-    this.homeService.getHome(this.usuario.id).subscribe({
-      next: (dataBack ) => {
-        this.dataPosts = dataBack;
-        this.dataPosts.forEach(singleData => {
+  onScrollDown(ev: any) {
+    this.contador += 1;
+    this.homeService.getHome(this.usuario.id, this.contador).subscribe({
+      next: (dataBack: any[] ) => {
+        dataBack.forEach(singleData => {
+          this.dataPosts.push(singleData);
           this.postActivity.getActivityShares(singleData.id_post).subscribe({next: (shares) => singleData.shares = shares as number});
           this.postActivity.getActivityLikes(singleData.id_post).subscribe({next: (likes) => singleData.likes = likes as number});
         })

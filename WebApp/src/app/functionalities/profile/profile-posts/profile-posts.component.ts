@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { HomeService } from 'src/app/services/home.service';
 import { PostActivityService } from 'src/app/services/post-activity.service';
@@ -13,6 +13,7 @@ import { ProfileService } from '../profile.service';
 export class ProfilePostsComponent {
   data:any[];
   public usuario: UsuarioModel
+  private contador = 0;
 
   constructor(private homeService: HomeService,
               private postActivity: PostActivityService,
@@ -20,7 +21,24 @@ export class ProfilePostsComponent {
               private userService: UserService) {
     this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
       next: (user: UsuarioModel) => {
-      this.homeService.getHomeByUser(user.username).subscribe({
+      this.homeService.getHomeByUser(user.username, this.contador).subscribe({
+          next: (res: any[]) => {
+            this.data = res;
+            this.data.forEach(data => {
+              this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
+              this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})
+            });
+          }
+        });
+      }
+    })
+  }
+
+  onScrollDown(ev: any) {
+    this.contador += 1;
+    this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
+      next: (user: UsuarioModel) => {
+      this.homeService.getHomeByUser(user.username, this.contador).subscribe({
           next: (res: any[]) => {
             this.data = res;
             this.data.forEach(data => {

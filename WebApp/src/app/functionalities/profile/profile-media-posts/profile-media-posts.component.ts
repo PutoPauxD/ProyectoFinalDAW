@@ -14,8 +14,9 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileMediaPostsComponent  {
 
-  dataPosts: PostModel[];
-  usuario: UsuarioModel;
+  public dataPosts: PostModel[];
+  private usuario: UsuarioModel;
+  private contador: number = 1;
 
   constructor(private postService: PostService,
               private postActivityService:PostActivityService,
@@ -33,7 +34,35 @@ export class ProfileMediaPostsComponent  {
           next: (dataBack: any[]) => {
             dataBack.forEach(interaccion => {
               if(interaccion.hasMedia === 1) {
-                this.homeService.getHomeByPostIdWithImage(interaccion.id_post).subscribe({
+                this.homeService.getHomeByPostIdWithImage(interaccion.id_post, this.contador).subscribe({
+                  next: (postCompleto: any) => {
+                    postCompleto.forEach(post => {
+                      this.dataPosts.push(post);
+                      this.postActivityService.getActivityShares(post.id_post).subscribe({next: (shares) => post.shares = shares as number});
+                      this.postActivityService.getActivityLikes(post.id_post).subscribe({next: (likes) => post.likes = likes as number});
+                    });
+                  }
+                })
+              }
+            })
+          }
+        });
+      }
+    })
+  }
+
+  onScrollDown(ev: any) {
+    this.contador += 1;
+
+    this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
+      next: (user: UsuarioModel) => {
+        this.usuario = user;
+
+        this.postService.getPostsByUser(this.usuario.id).subscribe({
+          next: (dataBack: any[]) => {
+            dataBack.forEach(interaccion => {
+              if(interaccion.hasMedia === 1) {
+                this.homeService.getHomeByPostIdWithImage(interaccion.id_post, this.contador).subscribe({
                   next: (postCompleto: any) => {
                       this.dataPosts.push(postCompleto);
                       this.postActivityService.getActivityShares(postCompleto.id_post).subscribe({next: (shares) => postCompleto.shares = shares as number});

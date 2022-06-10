@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { MensajesService } from 'src/app/services/mensajes.service';
 import { PublicService } from 'src/app/services/public.service';
@@ -11,19 +11,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ChatSelectorComponent {
 
-  public data: UsuarioModel[];
+  public chats: UsuarioModel[];
 
   constructor(private publicService: PublicService, private mensajeService: MensajesService, private userService: UserService) {
-    this.data = [];
+    this.chats = [];
     this.mensajeService.getChatsByUser(this.publicService.getUserLogged().id).subscribe({
       next: (ids: any) => {
         ids.forEach(id => {
             this.userService.getUser(id.id_recibe).subscribe({
-              next: (userRecibe: UsuarioModel) => {this.data.push(userRecibe)}
+              next: (userRecibe: UsuarioModel) => {this.chats.push(userRecibe)}
           });
         });
       }
     })
-  }
 
+  }
 }

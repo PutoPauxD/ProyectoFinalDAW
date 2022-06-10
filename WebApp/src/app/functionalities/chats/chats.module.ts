@@ -6,16 +6,19 @@ import { MessagesComponent } from './messages/messages.component';
 import { ChatsRoutingModule } from './chats-routing.module';
 import { ChatSelectorComponent } from './chat-selector/chat-selector.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ChatsComponent,
+    ChatSelectorComponent,
     MessagesComponent,
-    ChatSelectorComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     SharedModule,
     RouterModule,

@@ -8,7 +8,8 @@ import { PostModel } from '../model/post.model';
 })
 export class PostService {
 
-  private url = 'http://192.168.168.153:3000/api/post/'
+  private url = 'http://localhost:3000/api/post/'
+  private p: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -36,5 +37,13 @@ export class PostService {
 
   deletePost(id: number): Observable<Object> {
     return this.http.delete(this.url + id)
+  }
+
+  getPagination(): number {
+    return this.p;
+  }
+
+  setPagination(p: number): void {
+    this.p = p;
   }
 }

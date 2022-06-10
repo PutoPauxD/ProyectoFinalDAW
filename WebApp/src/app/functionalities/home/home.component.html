@@ -1,2 +1,9 @@
-<app-generate-post></app-generate-post>
-<app-post *ngFor="let data of dataPosts; let i = index" [data]="data"></app-post>
+<div class="container-fluid m-0 p-0 noscrollable" id="infinito"
+  infinite-scroll
+  [scrollWindow]="false"
+  (scrolled)="onScrollDown($event)">
+
+  <app-generate-post></app-generate-post>
+  <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" ></app-post>
+
+</div>

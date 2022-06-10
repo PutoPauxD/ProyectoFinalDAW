@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SearchService {
 
-  private url = 'http://192.168.168.153:3000/api/search/'
+  private url = 'http://localhost:3000/api/search/'
 
   constructor(private http: HttpClient) {}
 

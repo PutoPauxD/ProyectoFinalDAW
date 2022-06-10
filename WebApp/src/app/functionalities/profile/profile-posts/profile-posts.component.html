@@ -1,3 +1,8 @@
-<div class="container-fluid">
-  <app-post *ngFor="let data of data" [data]="data"></app-post>
+<div class="container-fluid m-0 p-0 noscrollable" id="infinito"
+  infinite-scroll
+  [scrollWindow]="false"
+  (scrolled)="onScrollDown($event)">
+
+  <app-post *ngFor="let data of data; let i = index" [data]="data" ></app-post>
+
 </div>

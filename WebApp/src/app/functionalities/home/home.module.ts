@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/common/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -10,6 +12,7 @@ import { SharedModule } from 'src/app/common/shared.module';
     HomeComponent
   ],
   imports: [
+    InfiniteScrollModule,
     CommonModule,
     SharedModule,
   ]
