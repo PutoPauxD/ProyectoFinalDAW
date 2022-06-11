@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private url = 'http://localhost:3000/api/home'
+  private url = 'http://192.168.168.153:3000/api/home'
 
   constructor(private http: HttpClient) { }
 
