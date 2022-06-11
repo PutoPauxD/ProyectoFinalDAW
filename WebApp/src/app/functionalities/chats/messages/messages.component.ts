@@ -13,6 +13,8 @@ export class MessagesComponent {
   mensajes: mensajes[];
   msjobj: mensajes;
   usuario: UsuarioModel
+  public theme: string;
+  public background: string;
 
   constructor(private mensajeService: MensajesService, public publicService: PublicService) {
     this.mensajes = [];
@@ -21,6 +23,8 @@ export class MessagesComponent {
       id_envia: this.publicService.getUserLogged().id,
       id_recibe: this.mensajeService.getMsjObj().id_recibe,
     }
+    this.theme = localStorage.getItem('theme');
+    this.background = localStorage.getItem('background')
 
     this.mensajeService.getMensajesByUsers(this.msjobj).subscribe({
       next: (mensajes: mensajes[]) => {

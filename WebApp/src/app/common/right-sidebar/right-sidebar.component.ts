@@ -22,9 +22,11 @@ export class RightSidebarComponent  {
   public changeTheme(): void {
     if (localStorage.getItem('theme') === 'bg-dark text-white') {
       localStorage.setItem('theme', 'bg-white text-dark');
+      localStorage.setItem('background', 'bg-image-white');
       this.router.navigateByUrl('/login');
     } else {
       localStorage.setItem('theme', 'bg-dark text-white');
+      localStorage.setItem('background', 'bg-image-dark');
       this.router.navigateByUrl('/login');
     }
   }

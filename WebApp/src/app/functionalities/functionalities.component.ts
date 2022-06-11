@@ -9,12 +9,15 @@ import { PostService } from '../services/post.service';
 export class FunctionalitiesComponent {
 
   public theme: string;
+  public background: string;
 
-  constructor(private postService: PostService) {
-    if (localStorage.getItem('theme')) {
+  constructor() {
+    if (localStorage.getItem('theme') || localStorage.getItem('background')) {
       this.theme = localStorage.getItem('theme');
+      this.background = localStorage.getItem('background');
     } else {
       localStorage.setItem('theme', 'bg-dark text-white');
+      localStorage.setItem('background', 'bg-image-white');
     }
   }
 

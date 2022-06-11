@@ -4,11 +4,12 @@
     <app-left-sidebar></app-left-sidebar>
   </div>
 
-  <div class="col container-fluid pb-5-md pt-5-md" id="container">
+  <div class="col container-fluid noscrollable pt-5 py-md-0" id="container">
       <router-outlet></router-outlet>
   </div>
+
   <div class="col-3 d-none d-lg-block">
     <app-right-sidebar></app-right-sidebar>
   </div>
-  <app-footer [ngClass]="theme" class="d-md-none  zindextopfooter"></app-footer>
+  <app-footer [ngClass]="theme" class="d-md-none zindextopfooter"></app-footer>
 </div>

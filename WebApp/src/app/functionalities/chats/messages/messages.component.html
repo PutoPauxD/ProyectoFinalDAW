@@ -1,23 +1,20 @@
-<div class="card text-center cardContainer">
+<div class="card text-center cardContainer h-100" [ngClass]="theme">
   <div class="card-header">
     Chat
   </div>
-  <div class="card-body bg-dark text-white">
-    <p *ngFor="let mensaje of mensajes" [ngClass]="(mensaje.id_envia === usuario.id ) ? 'enviado' : 'recibido'" >
+  <div class="card-body bg-dark text-white" [ngClass]="background">
+    <p *ngFor="let mensaje of mensajes" [ngClass]="(mensaje?.id_envia === usuario?.id ) ? 'enviado' : 'recibido'" >
       {{mensaje.mensaje}}
     </p>
   </div>
-  <div class="card-footer text-muted">
-    <div class="input-group mb-3">
-      <form (ngSubmit)="enviarMensaje()">
-
-        <input type="text" class="form-control" placeholder="Mensaje..." [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
-        <div class="input-group-append" (click)="enviarMensaje()">
-          <span class="input-group-text" id="basic-addon2">
-            <img src="assets/Send.png" class="imgEnviar" width="20px">
-          </span>
-        </div>
-      </form>
-    </div>
+  <div class="card-footer text-muted flex input-group">
+    <form (ngSubmit)="enviarMensaje()" class="d-flex flex-row justfiy-content-around w-100">
+      <input type="text" class="form-control" placeholder="Mensaje..." [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append d-flex justfiy-content-center" (click)="enviarMensaje()">
+        <span class="input-group-text" id="basic-addon2">
+          <img src="assets/Send.png" class="imgEnviar" width="20px">
+        </span>
+      </div>
+    </form>
   </div>
 </div>

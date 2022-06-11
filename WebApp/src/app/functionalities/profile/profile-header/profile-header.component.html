@@ -18,6 +18,7 @@
       <img [src]="usuario?.profpicture" alt="Profile Image" id="profile-img" class="rounded-circle px-1" style="width: 130px; height: 130px;">
 
       <div class="d-flex flex-row justify-content-end align-items-center">
+        <div *ngIf="follows && !isItMe" class="follow bg-white text-dark pointer mx-2" (click)="generarChat()"><i class="bi bi-envelope-plus-fill"></i></div>
         <app-profile-header-modal class="editarPerfil" [usuario]="usuario" *ngIf="isItMe"></app-profile-header-modal>
         <div *ngIf="!isItMe">
           <div *ngIf = "!follows" class="follow  bg-dark text-white pointer" (click)="follow()">Seguir</div>

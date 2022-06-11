@@ -4,6 +4,8 @@
   (scrolled)="onScrollDown($event)">
 
   <app-generate-post></app-generate-post>
-  <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" ></app-post>
+  <div class="container-fluid m-2">
+    <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" ></app-post>
+  </div>
 
 </div>

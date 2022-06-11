@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { FollowService } from 'src/app/services/follow.service';
+import { MensajesService } from 'src/app/services/mensajes.service';
 import { PublicService } from 'src/app/services/public.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,7 +21,8 @@ export class ProfileHeaderComponent implements OnChanges {
   constructor(private router: Router,
               private publicService: PublicService,
               private followService: FollowService,
-              private usuarioService: UserService) {
+              private usuarioService: UserService,
+              private mensajeService: MensajesService) {
     this.usuarioLogged = this.publicService.getUserLogged();
   }
 
@@ -50,9 +52,15 @@ export class ProfileHeaderComponent implements OnChanges {
     this.router.navigateByUrl('/home')
   }
 
+  public generarChat() {
+    this.mensajeService.generarChat(this.publicService.getUserLogged().id, this.usuario.id).subscribe();
+    this.mensajeService.generarChat(this.usuario.id, this.publicService.getUserLogged().id).subscribe();
+  }
+
   navigate(route: string): void {
     this.router.navigate([route]);
   }
+
 
   private checkIsItMe(): void {
     if(this.usuario.id === this.usuarioLogged.id)

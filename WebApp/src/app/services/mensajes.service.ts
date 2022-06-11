@@ -13,12 +13,20 @@ export class MensajesService {
 
   constructor(private http: HttpClient) { }
 
+  generarChat(id_envia, id_recibe) {
+    let msjobj = {
+      id_envia,
+      id_recibe
+    }
+    return this.http.post(this.url + 'chats/', msjobj);
+  }
+
   getMensajesByUsers(msjobj: mensajes): Observable<Object> {
     return this.http.get(this.url + msjobj.id_envia + '/' + msjobj.id_recibe);
   }
 
-  getChatsByUser(userId: number): Observable<Object> {
-    return this.http.get(this.url+userId+'/chats');
+  getChatsByUser(id_envia: number): Observable<Object> {
+    return this.http.get(this.url + id_envia + '/chats');
   }
 
   createMsj(msjobj: mensajes): Observable<Object> {
