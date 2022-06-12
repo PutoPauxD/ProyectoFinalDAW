@@ -22,7 +22,9 @@ export class ChatSelectorComponent {
               next: (userRecibe: any) => {
                 this.mensajeService.getMensajesByUsers({id_envia: this.publicService.getUserLogged().id, id_recibe: userRecibe.id}).subscribe({
                   next: (mensaje: any[]) => {
-                    userRecibe.lastMessage = mensaje[mensaje.length - 1].mensaje
+                    if(userRecibe) {
+                      userRecibe.lastMessage = mensaje[mensaje.length - 1].mensaje
+                    }
                     this.chats.push(userRecibe);
                   }
                 });

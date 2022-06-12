@@ -1,3 +1,5 @@
 <div [ngClass]="theme" class="mt-4">
-  <app-notification *ngFor="let data of data" [data]="data"></app-notification>
+  <app-notification *ngFor="let data of dataNotification" [data]="data"></app-notification>
 </div>
+
+<p *ngIf="dataNotification?.length <= 0">Parece que todavia no tienes ninguna notificacion</p>

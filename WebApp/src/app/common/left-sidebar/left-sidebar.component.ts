@@ -13,7 +13,7 @@ export class LeftSidebarComponent  {
   public usuario: UsuarioModel
 
   constructor(private publicService: PublicService, private router: Router) {
-    this.usuario = this.publicService.getUserLogged()
+    this.publicService.getUserLoggedObs().subscribe(user => this.usuario = user)
   }
 
   public logout(): void {
@@ -25,5 +25,17 @@ export class LeftSidebarComponent  {
 
   public userProfile(): void {
     this.router.navigate(['/profile/'+this.usuario.id]);
+  }
+
+  public changeTheme(): void {
+    if (localStorage.getItem('theme') === 'bg-dark text-white') {
+      localStorage.setItem('theme', 'bg-white text-dark');
+      localStorage.setItem('background', 'bg-image-white');
+      this.router.navigateByUrl('/login');
+    } else {
+      localStorage.setItem('theme', 'bg-dark text-white');
+      localStorage.setItem('background', 'bg-image-dark');
+      this.router.navigateByUrl('/login');
+    }
   }
 }

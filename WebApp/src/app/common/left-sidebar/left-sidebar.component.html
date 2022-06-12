@@ -12,7 +12,7 @@
                   <div class="text-wrapper">
                       <p class="profile-name"></p>
                       <div>
-                          <small class="designation text-muted" *ngIf="usuario.role === 1">Administrador</small>
+                          <small class="designation text-muted" *ngIf="usuario?.role === 1">Administrador</small>
                       </div>
                   </div>
               </div>
@@ -30,7 +30,7 @@
       <li class="nav-item cursor w-100">
           <a class="nav-link" routerLink="/search">
             <i class="bi bi-search me-2"></i>
-            <span class="menu-title">Search</span>
+            <span class="menu-title">Buscar</span>
           </a>
       </li>
 
@@ -44,14 +44,14 @@
       <li class="nav-item cursor w-100" >
           <a class="nav-link" routerLink="/notifications">
             <i class="bi bi-bell-fill me-2"></i>
-            <span class="menu-title" >Notifications</span>
+            <span class="menu-title" >Notificaciones</span>
           </a>
       </li>
 
       <li class="nav-item cursor w-100" >
           <a class="nav-link" routerLink="/chat/">
             <i class="bi bi-envelope-fill me-2"></i>
-            <span class="menu-title" >Messages</span>
+            <span class="menu-title" >Mensajes</span>
           </a>
       </li>
 
@@ -63,3 +63,5 @@
       </li>
   </ul>
 </nav>
+
+<div class="d-none d-md-block d-lg-none pointer position-absolute bottom-0 start-0 m-5 border rounded-circle p-2 bg-white"  (click)="changeTheme()"><i class="bi bi-moon text-dark ms-1 h3"></i></div>

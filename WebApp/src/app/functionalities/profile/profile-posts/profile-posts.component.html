@@ -1,8 +1,10 @@
-<div class="container-fluid m-0 p-0 noscrollable" id="infinito"
+<div *ngIf="dataPosts" class="container-fluid m-0 p-0 noscrollable" id="infinito"
   infinite-scroll
   [scrollWindow]="false"
   (scrolled)="onScrollDown($event)">
 
-  <app-post *ngFor="let data of data; let i = index" [data]="data" ></app-post>
+  <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" ></app-post>
 
 </div>
+
+<p *ngIf="dataPosts.length === 0">Parece que este usuario todavía no ha posteado nada</p>

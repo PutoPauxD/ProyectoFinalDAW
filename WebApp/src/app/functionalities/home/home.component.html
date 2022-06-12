@@ -3,9 +3,9 @@
   [scrollWindow]="false"
   (scrolled)="onScrollDown($event)">
 
-  <app-generate-post></app-generate-post>
-  <div class="container-fluid m-2">
-    <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" ></app-post>
+  <app-generate-post (emitPost)="newPost($event)"></app-generate-post>
+  <div *ngIf="dataPosts?.length > 0" class="container-fluid m-2">
+    <app-post *ngFor="let data of dataPosts; let i = index" [data]="data" (deletePostEmitter)="deletePost(deleteId)"></app-post>
   </div>
-
+  <p *ngIf="dataPosts?.length <= 0 && delay">Uy! Parece que esto está muy vacio... Aull no tiene mucho sentido si no sigues a tus amigos, ¿Por qué no sigues a alguien? Si no aparece en la pestaña de recomendados, puedes usar nuestro buscador!</p>
 </div>

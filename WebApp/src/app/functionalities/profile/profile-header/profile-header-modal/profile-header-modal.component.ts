@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { take } from 'rxjs';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { UserService } from 'src/app/services/user.service';
+import { ViewChild } from '@angular/core';
+import { PublicService } from 'src/app/services/public.service';
 
 @Component({
   selector: 'app-profile-header-modal',
@@ -19,7 +22,11 @@ export class ProfileHeaderModalComponent {
   public username: UntypedFormControl;
 
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private publicService: PublicService,
+    private router: Router
+  ) {
       this.username = new UntypedFormControl('');
   }
 
@@ -28,9 +35,11 @@ export class ProfileHeaderModalComponent {
   }
 
   guardarFotoPerfil(): void {
-    this.userService.changeUser(this.usuario).subscribe(
-      {next: () => this.usuario.profpicture = this.prevImagenRec}
-    );
+    this.usuario.profpicture = this.prevImagenRec;
+    localStorage.setItem('user', JSON.stringify(this.usuario));
+    this.userService.changeUser(this.usuario).subscribe();
+    this.publicService.setUserLogged(this.usuario)
+    console.log(this.usuario.profpicture)
   }
 
   recortarImagen(imagen: ImageCroppedEvent): void {
@@ -39,7 +48,7 @@ export class ProfileHeaderModalComponent {
 
 
   cambiarFotoPerfil(archivo: any): void {
-    if(archivo.target.files[0].size < 269142) {
+    if(archivo.target.files[0].size < 200000) {
        this.imgChangeEvt = archivo;
     } else {
       alert('Por favor seleccione un archivo mas pequeño.');
@@ -49,7 +58,7 @@ export class ProfileHeaderModalComponent {
 
   editarUsername(): void {
       this.usuario.username = this.username.value;
-      this.userService.changeUser(this.usuario).pipe(take(1)).subscribe();
-  }
-
+      localStorage.setItem('user', JSON.stringify(this.usuario));
+      this.userService.changeUser(this.usuario).subscribe();
+    }
 }

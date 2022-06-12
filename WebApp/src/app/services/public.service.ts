@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { loginUsuarioModel, registerUsuarioModel, UsuarioModel } from '../model/usuario.model';
 
 @Injectable({
@@ -10,7 +10,8 @@ export class PublicService {
 
   private url = 'http://192.168.168.153:3000/api/authuser'
   private loggedIn: boolean;
-  private userLogged: UsuarioModel;
+  public userLogged: UsuarioModel;
+  public userLoggedObs: BehaviorSubject<UsuarioModel> = new BehaviorSubject<UsuarioModel>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -36,7 +37,11 @@ export class PublicService {
     return this.userLogged;
   }
 
+  getUserLoggedObs(): Subject<UsuarioModel> {
+    return this.userLoggedObs;
+  }
   setUserLogged(usuario: any): void {
     this.userLogged = usuario;
+    this.userLoggedObs.next(usuario);
   }
 }

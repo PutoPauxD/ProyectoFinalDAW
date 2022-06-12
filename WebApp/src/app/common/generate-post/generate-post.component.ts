@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PostModel } from 'src/app/model/post.model';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostService } from 'src/app/services/post.service';
@@ -10,11 +10,15 @@ import { PublicService } from 'src/app/services/public.service';
   styleUrls: ['./generate-post.component.css']
 })
 export class GeneratePostComponent {
+
+  @Output() emitPost: EventEmitter<PostModel>;
+
   public theme: string;
   public loggedUser: UsuarioModel;
   public nuevoPost: PostModel;
 
   constructor(private publicService: PublicService, private postService: PostService) {
+    this.emitPost = new EventEmitter<PostModel>();
     this.loggedUser = this.publicService.getUserLogged();
     this.nuevoPost = {
       id_user: this.loggedUser.id,
@@ -42,7 +46,15 @@ export class GeneratePostComponent {
   }
 
   public generarPost(): void {
-    this.postService.createPost(this.nuevoPost).subscribe();
-    this.nuevoPost.text = '';
+    const oldtext = this.nuevoPost.text;
+    this.postService.createPost(this.nuevoPost).subscribe((resp: PostModel) => {
+      resp.text= oldtext,
+      resp.likes=this.nuevoPost.likes,
+      resp.shares=this.nuevoPost.shares,
+      resp.hasMedia=this.nuevoPost.hasMedia,
+      resp.media= this.nuevoPost.media,
+      this.emitPost.emit(resp)
+    });
+    this.nuevoPost.text = "";
   }
 }

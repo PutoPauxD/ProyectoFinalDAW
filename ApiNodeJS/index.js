@@ -26,7 +26,13 @@ app.use(function(req, res, next) {
 });
 
 app.set('port', port);
-app.use('/api', require('./routing'));
+app.use('/api', require('./routes/routing'));
+app.use('/api', require('./routes/home'));
+app.use('/api', require('./routes/user'));
+app.use('/api', require('./routes/post'));
+app.use('/api', require('./routes/activity'));
+app.use('/api', require('./routes/chats'));
+app.use('/api', require('./routes/follows'));
 
 //Llamada a la App por puerto
 app.listen(app.get('port'), (err)=>{ err ? console.log('Ha sucedido un error iniciando el servidor', err) : console.log('Servidor iniciado en el puerto', port) });

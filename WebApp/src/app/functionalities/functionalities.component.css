@@ -22,7 +22,7 @@
 
 .noscrollable{
   overflow: scroll;
-  max-height: 92vh;
+  max-height: 95vh;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 .noscrollable::-webkit-scrollbar {

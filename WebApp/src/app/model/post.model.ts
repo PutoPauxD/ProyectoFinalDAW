@@ -6,4 +6,7 @@ export interface PostModel{
   shares: number;
   hasMedia: number;
   media?: string;
+  name?: string;
+  username?: string;
+  profpicture?: string;
 }

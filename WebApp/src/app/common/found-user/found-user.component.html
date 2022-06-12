@@ -1,15 +1,15 @@
 <div [ngClass]="theme" class="p-0 card border-0">
-  <div class="card-body p-0" (click)="navigate()">
+  <div class="card-body p-0">
     <div class=" d-flex">
-      <div class="mx-2">
+      <div class="mx-2" (click)="navigate()">
           <img class="rounded-circle img-fluid cursor" style="width: 4rem;" src="{{user?.profpicture}}" alt="">
       </div>
       <div class="container d-flex align-items-center px-0 mt-2">
           <p class="fw-bold d-inline">{{user?.username}}
             <p class="text-secondary ms-1 fw-light d-inline">@{{user?.name}}</p>
       </div>
-      <div *ngIf = "!follows" class="follow justify-content-center bg-dark text-white" (click)="follow()">Seguir</div>
-      <div *ngIf = "follows" class="follow justify-content-center bg-white text-dark" (click)="unfollow()">Siguiendo</div>
+      <div *ngIf = "!follows" class="follow justify-content-center" (click)="follow()">Seguir</div>
+      <div *ngIf = "follows" class="follow justify-content-center" (click)="unfollow()">Siguiendo</div>
     </div>
   </div>
 </div>

@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicModule } from './auth/public.module';
 import { FunctionalitiesModule } from './functionalities/functionalities.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +20,7 @@ import { FunctionalitiesModule } from './functionalities/functionalities.module'
     HttpClientModule,
     RouterModule,
     PublicModule,
-    FunctionalitiesModule
+    FunctionalitiesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

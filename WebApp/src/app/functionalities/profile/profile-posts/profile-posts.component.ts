@@ -11,7 +11,7 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./profile-posts.component.css']
 })
 export class ProfilePostsComponent {
-  data:any[];
+  public dataPosts:any[];
   public usuario: UsuarioModel
   private contador = 0;
 
@@ -19,12 +19,13 @@ export class ProfilePostsComponent {
               private postActivity: PostActivityService,
               private profileService: ProfileService,
               private userService: UserService) {
+    this.dataPosts = [];
     this.userService.getUser(this.profileService.getidProfileSelected()).subscribe({
       next: (user: UsuarioModel) => {
-      this.homeService.getHomeByUser(user.username, this.contador).subscribe({
+        this.homeService.getHomeByUser(user.username, this.contador).subscribe({
           next: (res: any[]) => {
-            this.data = res;
-            this.data.forEach(data => {
+            this.dataPosts = res;
+            this.dataPosts.forEach(data => {
               this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
               this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})
             });
@@ -40,8 +41,8 @@ export class ProfilePostsComponent {
       next: (user: UsuarioModel) => {
       this.homeService.getHomeByUser(user.username, this.contador).subscribe({
           next: (res: any[]) => {
-            this.data = res;
-            this.data.forEach(data => {
+            this.dataPosts = res;
+            this.dataPosts.forEach(data => {
               this.postActivity.getActivityShares(data.id_post).subscribe({next: (shares) => data.shares = shares})
               this.postActivity.getActivityLikes(data.id_post).subscribe({next: (likes) => data.likes = likes})
             });

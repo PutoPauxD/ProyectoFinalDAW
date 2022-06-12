@@ -10,13 +10,13 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class NotificationsComponent {
 
-  public data: any;
+  public dataNotification: any;
   public theme: string;
 
   constructor(private notificationService: NotificationService, private publicService: PublicService) {
 
     this.notificationService.getNotification(this.publicService.getUserLogged().id).subscribe({
-      next: (activity) => this.data = activity
+      next: (activity) => this.dataNotification = activity
     })
     this.theme = localStorage.getItem('theme')
   }

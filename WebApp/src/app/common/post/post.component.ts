@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PostModel } from 'src/app/model/post.model';
 import { UsuarioModel } from 'src/app/model/usuario.model';
 import { PostActivityService } from 'src/app/services/post-activity.service';
@@ -13,6 +12,7 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class PostComponent implements OnInit {
 
+  @Output() deletePostEmitter: EventEmitter<number>;
   @Input() usuario: UsuarioModel;
   @Input() index: number;
   @Input() data: any;
@@ -21,21 +21,23 @@ export class PostComponent implements OnInit {
   public theme: string;
   public nuevoPost: PostModel;
 
-  constructor(private postActivityService: PostActivityService,
-              private postService: PostService,
-              private publicService: PublicService,
-              ) {
-                this.usuario = this.publicService.getUserLogged();
-                this.theme = localStorage.getItem('theme');
-                this.nuevoPost = {
-                  id_user: this.usuario.id,
-                  text: '',
-                  likes: 0,
-                  shares: 0,
-                  hasMedia: 0,
-                  media: '',
-                };
-              }
+  constructor(
+    private postActivityService: PostActivityService,
+    private postService: PostService,
+    private publicService: PublicService,
+  ) {
+    this.deletePostEmitter = new EventEmitter<number>();
+    this.usuario = this.publicService.getUserLogged();
+    this.theme = localStorage.getItem('theme');
+    this.nuevoPost = {
+      id_user: this.usuario.id,
+      text: '',
+      likes: 0,
+      shares: 0,
+      hasMedia: 0,
+      media: '',
+    };
+  }
 
   ngOnInit(): void {
     this.postActivityService.checkActivityl(this.data.id_post, this.usuario.id).subscribe(resp => {
@@ -97,6 +99,7 @@ export class PostComponent implements OnInit {
   }
 
   deletePost():void {
+    this.deletePostEmitter.emit(this.index);
     this.postService.deletePost(this.data.id_post).subscribe();
   }
 

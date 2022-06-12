@@ -8,9 +8,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalFotoPerfil">Editar foto de perfil</button>
-        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalNombreUsuario">Editar nombre de usuario</button>
-        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#">Editar contraseña</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalFotoPerfil" data-bs-dismiss="modal">Editar foto de perfil</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalNombreUsuario"data-bs-dismiss="modal">Editar nombre de usuario</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#" data-bs-dismiss="modal">Editar contraseña</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cerrar</button>
@@ -42,7 +42,7 @@
       </div>
       <div class="modal-footer bg-dark">
         <button type="button" class="btn btn-danger border-0" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success border-0" (click)="guardarFotoPerfil()">Guardar</button>
+        <button type="button" class="btn btn-success border-0" (click)="guardarFotoPerfil()" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
