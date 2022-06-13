@@ -20,6 +20,7 @@ export class ProfileHeaderModalComponent {
   public imgChangeEvt: any;
   public showEditModal: boolean;
   public username: UntypedFormControl;
+  public descripcion: UntypedFormControl;
 
 
   constructor(
@@ -28,6 +29,7 @@ export class ProfileHeaderModalComponent {
     private router: Router
   ) {
       this.username = new UntypedFormControl('');
+      this.descripcion = new UntypedFormControl('');
   }
 
   public onShowEditModal(): void {
@@ -58,6 +60,7 @@ export class ProfileHeaderModalComponent {
 
   editarUsername(): void {
       this.usuario.username = this.username.value;
+      this.usuario.descripcion = this.descripcion.value;
       localStorage.setItem('user', JSON.stringify(this.usuario));
       this.userService.changeUser(this.usuario).subscribe();
     }

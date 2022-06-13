@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalFotoPerfil" data-bs-dismiss="modal">Editar foto de perfil</button>
-        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalNombreUsuario"data-bs-dismiss="modal">Editar nombre de usuario</button>
+        <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#modalNombreUsuario"data-bs-dismiss="modal">Editar datos de usuario</button>
         <button class="rounded-pill bg-dark text-white border m-3" data-bs-toggle="modal"  data-bs-target="#" data-bs-dismiss="modal">Editar contraseña</button>
       </div>
       <div class="modal-footer">
@@ -52,13 +52,15 @@
   <div class="modal-dialog bg-dark">
     <div class="modal-content">
       <div class="modal-header bg-dark">
-        <h5 class="modal-title" id="staticBackdropLabel">Cambiar nombre de usuario</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Datos de Usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body bg-dark">
         <form action="#">
           <label for="name">Nombre de usuario: </label>
           <input id="name" type="text" [formControl]="username">
+          <label for="name">Descripcion de usuario: </label>
+          <input id="name" type="text" [formControl]="descripcion">
         </form>
       </div>
       <div class="modal-footer bg-dark">

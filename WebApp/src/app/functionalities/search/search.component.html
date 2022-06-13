@@ -6,4 +6,4 @@
 </div>
 
 <app-found-user *ngFor="let user of foundUsers[0]" [user]="user"></app-found-user>
-<p class="text-white" *ngIf="foundUsers.length === 0">Escribe el @ de algun usuario y nosotros los encontraremos por ti </p>
+<p class="text-white" *ngIf="foundUsers.length === 0 || busqueda === '' ">Escribe el @ de algun usuario y nosotros los encontraremos por ti </p>
