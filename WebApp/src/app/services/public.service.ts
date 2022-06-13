@@ -8,7 +8,7 @@ import { loginUsuarioModel, registerUsuarioModel, UsuarioModel } from '../model/
 })
 export class PublicService {
 
-  private url = 'http://192.168.168.153:3000/api/authuser'
+  private url = 'http://master-pwebmin-debian.lan:3000/api/authuser'
   private loggedIn: boolean;
   public userLogged: UsuarioModel;
   public userLoggedObs: BehaviorSubject<UsuarioModel> = new BehaviorSubject<UsuarioModel>(null);

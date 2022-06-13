@@ -8,7 +8,7 @@ import { UsuarioModel } from '../model/usuario.model';
 })
 export class UserService {
 
-  private url = 'http://192.168.168.153:3000/api/users/';
+  private url = 'http://master-pwebmin-debian.lan:3000/api/users/';
   private : UsuarioModel;
 
   constructor(private http: HttpClient) { }

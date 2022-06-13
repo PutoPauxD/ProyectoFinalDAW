@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PostActivityService {
 
-  private url = 'http://192.168.168.153:3000/api/activity/'
+  private url = 'http://master-pwebmin-debian.lan:3000/api/activity/'
 
   constructor(private http: HttpClient) { }
 
