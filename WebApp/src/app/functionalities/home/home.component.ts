@@ -31,6 +31,7 @@ export class HomeComponent {
             this.postActivity.getActivityShares(singleData.id_post).subscribe({next: (shares) => singleData.shares = shares as number});
             this.postActivity.getActivityLikes(singleData.id_post).subscribe({next: (likes) => singleData.likes = likes as number});
           })
+          console.log(dataBack, this.dataPosts);
         }
       }
     })

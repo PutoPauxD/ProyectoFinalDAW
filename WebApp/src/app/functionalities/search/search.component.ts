@@ -19,7 +19,7 @@ export class SearchComponent  {
   search() {
     if(this.busqueda !== '') {
       this.searchService.search(this.busqueda).subscribe({
-        next: (users) => {this.foundUsers.push(users);}
+        next: (users) => {this.foundUsers = []; this.foundUsers.push(users);}
       })
     } else {
       this.foundUsers = [];

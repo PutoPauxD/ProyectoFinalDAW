@@ -48,7 +48,7 @@ export class ProfileHeaderComponent implements OnChanges {
     this.follows = false;
   }
   deleteAccount(): void {
-    this.usuarioService.deleteUser(this.usuario.id);
+    this.usuarioService.deleteUser(this.usuario.id).subscribe();
     this.router.navigateByUrl('/home')
   }
 
