@@ -13,6 +13,9 @@ routing.get("/home/:id/:n", async(req, res) => {
     if(rows.length > num){
         if(rows.length > num) {
             if(rows.length > num + 5) {
+                rows.forEach(post => {
+                    console.log(post);
+                });
                 res.status(200).send(JSON.stringify(rows.slice(num, final), null, 4));
             } else {
                 res.status(200).send(JSON.stringify(rows.slice(num, final), null, 4));
@@ -20,6 +23,8 @@ routing.get("/home/:id/:n", async(req, res) => {
         } else {
             res.status(200).send(JSON.stringify(rows.slice(num, num - (rows.length - 1) ), null, 4));
         }
+    } else {
+        res.status(200).send(JSON.stringify(rows, null, 4))
     }
 });
 

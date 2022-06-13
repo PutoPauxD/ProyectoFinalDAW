@@ -39,7 +39,7 @@ routing.get("/users/numPost/:id", async (req, res) => {
 //Borrar un usuario.
 routing.delete("/users/:id", async (req, res) => {
     const {id} = req.params;
-    const sql = `delete from users where id = "${id}`;
+    const sql = `delete from users where id = ${id}`;
     await conexion.query(sql, [id]);
     res.status(200).send();
 })
